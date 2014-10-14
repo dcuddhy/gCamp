@@ -23,22 +23,17 @@ body {
 }
 */
 
-body {
-  background: url('https://farm4.staticflickr.com/3933/15335307918_b70c35872f_h.jpg') no-repeat 50% 50% fixed;
-  background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  -webkit-background-size: cover;
-}
+
 
 
 .navbar {
   background-color: orange;
+  position: fixed;
 }
 
 .jumbotron  {
   background-color: rgba (0,0,0,0);
-  height: 60vh;
+/*  height: 60vh;*/
 }
 
 h1 {
@@ -57,10 +52,3 @@ h2 {
   background-color:white;
   height:9em;
 }
-
-
-/*
-.jumbotron {
-  background-image: url('https://farm9.staticflickr.com/8482/8203794182_4c016f5fa9_h.jpg');
-}
-*/
