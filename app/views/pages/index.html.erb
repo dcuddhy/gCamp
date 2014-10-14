@@ -10,7 +10,7 @@
 
 <!-- Main jumbotron for a primary marketing message or call to action -->
 
-  
+
   <center>
     <h1>gCamp</h1>
     <h6><p>Your life, organized</p></h6>
@@ -62,3 +62,16 @@
       </div>
     </div>
   </div>
+
+<br>
+<br>
+
+
+
+<% quotes = [['"Failure is not an option. Everyone has to succeed"', ' - Arnold Schwartzenegger'],
+            ['"Your time is limited, so don\'t waste it living someone else\'s life."', ' - Steve Jobs'],
+            ['"Better Ingredients, Better Pizza"', ' - Papa John']] %>
+
+<% quotes.each do |quote| %>
+<ul><%= quote [0]%><%= quote [1]%><%= quote [2]%></ul>
+<% end %>
