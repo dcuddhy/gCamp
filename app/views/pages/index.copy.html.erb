@@ -68,16 +68,26 @@
 
 
 
-<% quotes = [
-                ['"Failure is not an option. Everyone has to succeed"', '- Arnold Schartzenegger'],
-                ['"Your time is limited, so don\'t waste it living someone else\'s life."', '- Steve Jobs'],
-                ['"Better Ingredients, Better Pizza"','- Papa John']
-            ] %>
+<% authors_quotes = [['Arnold Schartzenegger','"Failure is not an option. Everyone has to succeed"'],
+                    ['Steve Jobs']['"Your time is limited, so don\'t waste it living someone else\'s life."'],
+                    ['Papa John']['"Better Ingredients, Better Pizza"']] %>
 
 
-
-
-<% quotes.shuffle.each do |quote| %>
-<p><%= quote [0]%></p>
+<% authors.each do |author| %>
+<% quotes.each do |quote| %>
+<p><%= author_quote [0]%></p>
 <p><font color= "#666"><%= quote [1]%></font color></p>
 <% end %>
+
+
+
+<!--
+<% quotes = [['"Failure is not an option. Everyone has to succeed"', ' - Arnold Schwartzenegger'],
+            ['"Your time is limited, so don\'t waste it living someone else\'s life."', ' - Steve Jobs'],
+            ['"Better Ingredients, Better Pizza"', ' - Papa John']] %>
+
+
+<% quotes.each do |quote| %>
+<p><%= quote [0]%></p>
+<p><font color= "#666"><%= quote [1]%></font color></p>
+<% end %>-->
