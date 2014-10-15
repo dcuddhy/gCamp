@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   root "pages#index"
   get "/about" => "pages#about", as: :about_gCamp
   get "/terms" => "pages#terms", as: :terms_gCamp
+  get "/faq" => "pages#faq", as: :faq_gCamp
 
 
   # The priority is based upon order of creation: first created -> highest priority.

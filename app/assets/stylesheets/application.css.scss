@@ -28,7 +28,7 @@ body {
 
 .navbar {
   background-color: orange;
-  position: fixed;
+
 }
 
 .jumbotron  {
@@ -51,4 +51,41 @@ h2 {
 .white{
   background-color:white;
   height:9em;
+}
+
+.big_white{
+  background-color:white;
+  padding-bottom: 5px;
+
+}
+
+.author_grey{
+  color: #fff;
+}
+
+.faq_question{
+  text-decoration: bold;
+}
+
+footer{
+  color: black
+}
+/* unvisited link */
+a:link {
+    color: #000000;
+}
+
+/* visited link */
+a:visited {
+    color: #000000;
+}
+
+/* mouse over link */
+a:hover {
+    color: #000000;
+    text-decoration: underline;
+}
+
+a:active {
+    color: #000000;
 }

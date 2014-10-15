@@ -67,17 +67,12 @@
 <br>
 
 
+ <!-- things used to be here -->
 
-<% quotes = [
-                ['"Failure is not an option. Everyone has to succeed"', '- Arnold Schartzenegger'],
-                ['"Your time is limited, so don\'t waste it living someone else\'s life."', '- Steve Jobs'],
-                ['"Better Ingredients, Better Pizza"','- Papa John']
-            ] %>
-
-
-
-
-<% quotes.shuffle.each do |quote| %>
-<p><%= quote [0]%></p>
-<p><font color= "#666"><%= quote [1]%></font color></p>
+<div class="big_white">
+<h2>Quotes</h2>
+<% @quotes.shuffle.each do |quote| %>
+<p class=>"<%= quote.text %>"</p>
+<p class= "author_grey"> - <%= quote.author %></p>
 <% end %>
+</div>

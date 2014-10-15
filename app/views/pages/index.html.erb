@@ -71,6 +71,6 @@
 
 
 <% @quotes.shuffle.each do |quote| %>
-<p><%= quote [0]%></p>
-<p><font color= "#666"><%= quote [1]%></font color></p>
+<strong><p>"<%= quote.text %>"</p></strong>
+<p class= "author_grey"> - <%= quote.author %></p>
 <% end %>
