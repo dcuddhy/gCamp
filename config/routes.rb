@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  resources :listing_tasks
+
   root "pages#index"
   get "/about" => "pages#about", as: :about_gCamp
   get "/terms" => "pages#terms", as: :terms_gCamp
