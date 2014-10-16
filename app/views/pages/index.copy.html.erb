@@ -69,10 +69,8 @@
 
  <!-- things used to be here -->
 
-<div class="big_white">
 <h2>Quotes</h2>
 <% @quotes.shuffle.each do |quote| %>
 <p class=>"<%= quote.text %>"</p>
 <p class= "author_grey"> - <%= quote.author %></p>
 <% end %>
-</div>
