@@ -1,6 +1,14 @@
-<h1>Listing listing_tasks</h1>
 
-<table>
+<table class="table" width="100%" >
+  <thread>
+    <tr>
+      <td><h1>Tasks</h1></td>
+      <td style=vertical-align:bottom align="right"><button class="btn btn-small btn-inverse" type="button"><%= link_to 'New Listing task', new_listing_task_path %></h5></button></td>
+    </tr>
+  </thread>
+</table>
+
+<table class="table">
   <thead>
     <tr>
       <th>Description</th>
@@ -11,15 +19,11 @@
   <tbody>
     <% @listing_tasks.each do |listing_task| %>
       <tr>
-        <td><%= listing_task.description %></td>
-        <td><%= link_to 'Show', listing_task %></td>
-        <td><%= link_to 'Edit', edit_listing_task_path(listing_task) %></td>
-        <td><%= link_to 'Destroy', listing_task, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td width="100%"><%= listing_task.description %></td>
+        <td align="right"><button class="btn btn-small btn-primary" type="button"><%= link_to 'Show', listing_task %></button></td>
+        <td align="right"><button class="btn btn-small btn-primary" type="button"><%= link_to 'Edit', edit_listing_task_path(listing_task) %></button></td>
+        <td align="right"><button class="btn btn-small btn-primary" type="button"><%= link_to 'Destroy', listing_task, method: :delete, data: { confirm: 'Are you sure?' } %></button></td>
       </tr>
     <% end %>
   </tbody>
 </table>
-
-<br>
-
-<%= link_to 'New Listing task', new_listing_task_path %>

@@ -59,9 +59,10 @@
       <footer class="container">
         <hr>
         <p>
-          <span class="about"><%= link_to "About", about_gCamp_path %> | </span>
+          <span class="about"><%= link_to "About", about_gCamp_path, :class => 'my-special-link' %> | </span>
           <span class="terms"><%= link_to "Terms", terms_gCamp_path %> | </span>
-          <span class="faq"><%= link_to "FAQ", faq_gCamp_path %> </span>
+          <span class="faq"><%= link_to "FAQ", faq_gCamp_path %> | </span>
+          <span class="tasks"><%= link_to "Tasks", tasks_gCamp_path %> </span>
         </p>
       </footer>
     </div> <!-- /container -->
@@ -69,8 +70,9 @@
 
 
 <!-- <nav>
-    <ul>
-       <li class="home"><a href="#">Home</a></li>
+
+       <a href="">Home</a>
+
        <li class="about"><a href="#">About</a></li>
        <li class="clients"><a href="#">Clients</a></li>
        <li class="contact"><a href="#">Contact Us</a></li>
