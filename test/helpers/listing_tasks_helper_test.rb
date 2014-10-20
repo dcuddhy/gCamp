@@ -1,4 +1,4 @@
 require 'test_helper'
 
-class ListingTasksHelperTest < ActionView::TestCase
+class TasksHelperTest < ActionView::TestCase
 end

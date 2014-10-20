@@ -1,10 +1,10 @@
-<%= form_for(@listing_task) do |f| %>
-  <% if @listing_task.errors.any? %>
+<%= form_for(@task) do |f| %>
+  <% if @task.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@listing_task.errors.count, "error") %> prohibited this listing_task from being saved:</h2>
+      <h2><%= pluralize(@task.errors.count, "error") %> prohibited this task from being saved:</h2>
 
       <ul>
-      <% @listing_task.errors.full_messages.each do |message| %>
+      <% @task.errors.full_messages.each do |message| %>
         <li><%= message %></li>
       <% end %>
       </ul>
@@ -15,6 +15,7 @@
     <%= f.label :description %><br>
     <%= f.text_field :description %>
   </div>
+
   <div class="actions">
     <%= f.submit %>
   </div>
