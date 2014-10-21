@@ -1,17 +1,19 @@
+<h1>Task Details</h1>
+
+<table class="table" width="100%">
+      <tr>
+
+
 <p id="notice"><%= notice %></p>
 <br>
 <br>
 <br>
-<p>
-  <strong>Description:</strong>
-  <%= @task.description %>
-</p>
 
-<p>
-  <strong>Complete:</strong>
-  <%= @task.complete %>
-</p>
+        <tr><td width="100%" class="pull-left"><strong>Description: </strong><%= @task.description %></td></tr>
+        <tr><td width="100%" class="pull-left"><strong>Due Date: </strong><%= @task.due_date %></td></tr>
+        <tr><td width="100%" class="pull-left"><strong>Complete: </strong><%= @task.complete %></td></tr>
+      </tr>
+</table>
 
-
-<%= link_to 'Edit', edit_task_path(@task) %> |
-<%= link_to 'Back', tasks_path %>
+<td class="pull-left"><button class="btn btn-small btn-primary" type="button"><%= link_to 'Edit', edit_task_path(@task) %></button></td>
+<td class="pull-left"><button class="btn btn-small btn-primary" type="button"><%= link_to 'Back', tasks_path %></button></td>
