@@ -21,12 +21,15 @@
     <%= f.date_field :due_date, class:"col-md-4" %>
   </div>
 
-<div class="complete">
-  <%= f.label :checkbox, "Complete", class:"pull-left col-md-1" %>
+
+<div class="complete row">
+  <%= f.label :checkbox, "Complete", class:"col-md-1" %>
   <%= f.check_box :complete, class:"col-md-4" %>
 </div>
+
 <br>
   <div class="actions">
     <%= f.submit %>
   </div>
+  <br>
 <% end %>
