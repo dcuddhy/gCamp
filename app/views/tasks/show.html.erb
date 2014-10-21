@@ -2,9 +2,10 @@
 
 <table class="table" width="100%">
       <tr>
+<% if notice.is_a? String %>
 
-
-<p id="notice"><%= notice %></p>
+<div class="text-center alert alert-info"><%= notice %></div>
+<% end %>
 <br>
 <br>
 <br>
