@@ -16,5 +16,5 @@
       </tr>
 </table>
 
-<td class="pull-left"><button class="btn btn-small btn-primary" type="button"><%= link_to 'Edit', edit_task_path(@task) %></button></td>
-<td class="pull-left"><button class="btn btn-small btn-primary" type="button"><%= link_to 'Back', tasks_path %></button></td>
+<td><%= link_to 'Edit', edit_task_path, class: "pull-left btn btn-info" %></td>
+<td><%= link_to 'Back', tasks_path, class: "pull-left btn btn-info" %></td>

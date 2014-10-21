@@ -1,27 +1,28 @@
-<table class="table" width="100%">
-  <thread>
-    <tr>
-      <td><h1>Tasks</h1></td>
-      <td style=vertical-align:bottom align="right"><button class="btn btn-small btn-inverse" type="button"><%= link_to 'New Task', new_task_path %></h5></button></td>
-    </tr>
-  </thread>
-</table>
+<div class="page-header">
+  <%= link_to 'New Task', new_task_path, class: "pull-right btn btn-primary" %>
+  <h2>Tasks</h2>
+</div>
+
+
+
+
 
 <table class="table">
-  <thead>
-    <tr>
-      <th>Description</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
 
-  <tbody>
+<tbody>
+
+
+
+
+
+
+    Description
     <% @tasks.each do |task| %>
       <tr>
         <td width="100%"><%= task.description %></td>
-        <td align="right"><button class="btn btn-small btn-primary" type="button"><%= link_to 'Show', task %></button></td>
-        <td align="right"><button class="btn btn-small btn-primary" type="button"><%= link_to 'Edit', edit_task_path(task) %></button></td>
-        <td align="right"><button class="btn btn-small btn-primary" type="button"><%= link_to 'Destroy', task, method: :delete, data: { confirm: 'Are you sure?' } %></button></td>
+        <td><%= link_to 'Show', task, class: "pull-right btn btn-success" %></td>
+        <td><%= link_to 'Edit', edit_task_path(task), class: "pull-right btn btn-info" %></td>
+        <td><%= link_to 'Destroy', task, class: "pull-right btn btn-warning", method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
