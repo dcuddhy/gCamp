@@ -65,10 +65,17 @@
 <br>
 
 
- <!-- things used to be here -->
-
-
 <% @quotes.shuffle.each do |quote| %>
+<div class="quote" style="
+  background: rgba(0,0,0,0.4);
+  border-radius: 4px;
+  padding: .5em 1em .1em 1em;
+  color: #efefef;
+  margin: 5px;
+">
+
 <strong><p>"<%= quote.text %>"</p></strong>
 <p class= "author_grey"> - <%= quote.author %></p>
+</div>
+
 <% end %>
