@@ -1,5 +1,11 @@
-<div class="page-header">
-  <%= link_to 'New Task', new_task_path, class: "pull-right btn btn-primary" %>
+
+<div class= "page-header">
+<div class= "pull-right">
+  <%= link_to "All", tasks_path %> |
+  <%= link_to " Incomplete", tasks_path(incomplete:"partial") %>
+  <%= link_to 'New Task', new_task_path, class: "btn btn-primary" %>
+</div>
+
   <h2>Tasks</h2>
 </div>
 
