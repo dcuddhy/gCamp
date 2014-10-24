@@ -13,7 +13,6 @@
 
 
 
-
   <div class="field form-group row">
     <%= f.label :description, class:"col-xs-1" %>
     <div class="col-xs-4">
@@ -31,8 +30,11 @@
 
 
 <div class="complete row">
-  <%= f.label :checkbox, "Complete", class:"col-xs-1" %>
-  <%= f.check_box :complete, class:"col-md-4" %>
+  <div class= "col-xs-2"
+  <div class= "col-xs-10">
+  <%= f.label :complete %>
+  <%= f.check_box :complete %>
+</div>
 </div>
 
 <br>
