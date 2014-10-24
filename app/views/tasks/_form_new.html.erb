@@ -1,4 +1,5 @@
-<%= form_for(@task) do |f| %>
+<%= form_for(@task, html: {class: "form-horizontal"}) do |f| %>
+
   <% if @task.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@task.errors.count, "error") %> prohibited this task from being saved:</h2>
@@ -12,23 +13,30 @@
   <% end %>
 
 
-
-<div class="field form-group row">
-  <%= f.label :description, class:"col-xs-1" %>
-  <div class="col-xs-4">
-  <%= f.text_field :description, class:"form-control" %>
+  <div class="field form-group">
+    <%= f.label :description, class:"col-xs-1" %>
+    <div class="col-xs-4">
+      <%= f.text_field :description, class:"form-control" %>
+    </div>
   </div>
-</div>
 
-<div class="form-group row">
-  <%= f.label :due_date, "Due Date", class:"col-xs-1" %>
-  <div class="col-xs-4">
-  <%= f.date_field :due_date, class:"form-control" %>
+
+  <div class="form-group row">
+    <%= f.label :due_date, "Due Date", class:"col-xs-1" %>
+    <div class="col-xs-4">
+    <%= f.date_field :due_date, class:"form-control" %>
+    </div>
   </div>
-</div>
 
 <br>
-  <div class="actions">
+
+<div class="form-group">
+  <div class="col-sm-offset-1 col-sm-11">
     <%= f.submit class:"btn btn-primary" %>
   </div>
+</div>
+
+
 <% end %>
+
+</form>
