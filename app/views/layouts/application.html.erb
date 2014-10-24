@@ -52,22 +52,26 @@
 
       <footer class="container">
         <hr>
-        <p>
+        <div class="col-md-3">
           <span class="about"><%= link_to "About", about_gCamp_path, :class => 'my-special-link' %> | </span>
           <span class="terms"><%= link_to "Terms", terms_gCamp_path %> | </span>
           <span class="faq"><%= link_to "FAQ", faq_gCamp_path %> | </span>
           <span class="tasks"><%= link_to "Tasks", tasks_gCamp_path %> </span>
-          <span class="tasks"><%= link_to "http://linkedin.com" do %> </span>
-                                <%= image_tag("Linked_In.png", width: "20em") %>
-                              <% end %>
-          <span class="tasks"><%= link_to "http://github.com" do %> </span>
-                                <%= image_tag("GitHub.png", width: "20em") %>
-                              <% end %>
-          <span class="tasks"><%= link_to "http://twitter.com" do %> </span>
-                                <%= image_tag("Twitter.png", width: "20em") %>
-                              <% end %>
-          <span class="tasks"><%= link_to "http://www.galvanize.it/school/" do %> </span>
-        </p>
+        </div>
+        <div class="col-md-2 col-md-offset-7">
+          <span><%= link_to "http://linkedin.com/in/drewcuddhy" do %> </span>
+                    <%= image_tag("Linked_In.png", width: "20em") %>
+                <% end %>
+          <span><%= link_to "https://github.com/dcuddhy" do %> </span>
+                    <%= image_tag("GitHub.png", width: "20em") %>
+                <% end %>
+          <span><%= link_to "http://twitter.com/dcuddhy" do %> </span>
+                  <%= image_tag("Twitter.png", width: "20em") %>
+                <% end %>
+          <span><%= link_to "http://www.galvanize.it/school/" do %> </span>
+                  <%= image_tag("g.png", width: "15em") %>
+                <% end %>
+        </div>
       </footer>
     </div> <!-- /container -->
 
