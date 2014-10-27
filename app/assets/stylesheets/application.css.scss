@@ -17,21 +17,47 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
-/*
-body {
-  background-image:  url('https://farm8.staticflickr.com/7304/10891456256_6aac4bc4d2_k.jpg');
-}
-*/
-
 .jumbotron  {
   background-color: rgba (0,0,0,0);
-/*  height: 60vh;*/
+}
+
+
+.navbar-brand{
+  color: white;
+
+  /* unvisited link */
+  a:link {
+      color: white;
+  }
+
+  /* visited link */
+  a:visited {
+      color: white;
+  }
+
+  /* mouse over link */
+  a:hover {
+      color: white;
+      text-decoration: underline;
+  }
+
+  a:active {
+      color: white;
+  }
 }
 
 .white{
   background-color:white;
   height:9em;
 }
+
+.primary{
+  background-color:#3173BF;
+  color:white;
+  padding-left:10px;
+  padding-right:10px;
+}
+
 
 .author_grey{
   color: #fff;
