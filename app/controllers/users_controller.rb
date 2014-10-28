@@ -10,9 +10,8 @@ class UsersController < ApplicationController
     @user = User.new
   end
 
-# The task at hand
   def edit
-     @user = User.find(params[:id])
+    @user = User.find(params[:id])
   end
 
   def create
@@ -21,10 +20,12 @@ class UsersController < ApplicationController
     redirect_to users_path, notice: 'User was successfully created.'
   end
 
-# The task at hand
 
-
-
+  def update
+    @user = User.find(params[:id])
+    @user.update(user_params)
+    redirect_to users_path, notice: 'User was successfully created.'
+  end
 
 
 

@@ -28,8 +28,8 @@
       <tr>
         <% @users.each do |user| %>
         <td width="200px"><%= user.first_name %> <%= user.last_name %></td>
-        <td><%= user.email %></td>
-        <td><%= link_to 'Update', edit_user_path(user), class: "pull-right" %></td>
+        <td><%= mail_to user.email %></td>
+        <td><%= link_to 'Edit', edit_user_path(user), class: "pull-right" %></td>
 
       </tr>
     <% end %>
