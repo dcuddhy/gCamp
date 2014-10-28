@@ -31,7 +31,7 @@ class PagesController <ApplicationController
                   your life. gCamp is your one stop shop to organize
                   all your tasks and documents.  You'll also be able
                   to track comments that you and others make.  gCamp
-                  may eventually replace all need for paper and pens
+                  may Userually replace all need for paper and pens
                   in the entire world.  Well, maybe not, but it's
                   going to be pretty cool."
 
