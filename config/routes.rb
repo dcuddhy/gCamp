@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   get "/terms" => "pages#terms", as: :terms_gCamp
   get "/faq" => "pages#faq", as: :faq_gCamp
   get "/tasks" => "pages#tasks", as: :tasks_gCamp
+  get "/users" => "pages#users", as: :users_gCamp
 
 
   # The priority is based upon order of creation: first created -> highest priority.
