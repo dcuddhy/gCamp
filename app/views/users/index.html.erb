@@ -5,9 +5,15 @@
 
   analogous to tasks/index.html.erb
  -->
-<h2>Users</h2>
 
-<%= link_to 'New User', new_user_path %>
+
+
+ <div class= "page-header">
+
+<%= link_to 'New User', new_user_path, class: "btn btn-primary pull-right" %>
+<h2>Users</h2>
+</div>
+
 
 <% if notice.is_a? String %>
 <div class="text-center alert alert-info"><%= notice %></div>
@@ -17,14 +23,13 @@
 
 <table class="table" width="100%">
     <thead>
-      <th>First Name</th><th>Last Name</th><th>Email</th>
+      <th class:"col-xs-2">Name</th><th class:"col-xs-2">Email</th><th></th>
     </thead>
       <tr>
         <% @users.each do |user| %>
-        <td><%= user.first_name %></td>
-        <td><%= user.last_name %></td>
+        <td width="200px"><%= user.first_name %> <%= user.last_name %></td>
         <td><%= user.email %></td>
-        <td><%= link_to 'Update', edit_user_path(user) %></td>
+        <td><%= link_to 'Update', edit_user_path(user), class: "pull-right" %></td>
 
       </tr>
     <% end %>
