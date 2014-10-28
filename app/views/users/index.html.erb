@@ -25,12 +25,14 @@
     <thead>
       <th class:"col-xs-2">Name</th><th class:"col-xs-2">Email</th><th></th>
     </thead>
+    <% if @users %>
       <tr>
         <% @users.each do |user| %>
         <td width="200px"><%= user.first_name %> <%= user.last_name %></td>
         <td><%= mail_to user.email %></td>
         <td><%= link_to 'Edit', edit_user_path(user), class: "pull-right" %></td>
-
+        <% end %>
       </tr>
     <% end %>
+
 </table>
