@@ -1,1 +1,21 @@
-<%= render 'form' %>
+
+<% if notice.is_a? String %>
+  <div class="text-center alert alert-success"><%= notice %></div>
+<% end %>
+
+<br>
+<br>
+<br>
+
+<table  width="100%">
+  <tr>
+      <%= link_to 'Edit', edit_user_path, class: "btn btn-info pull-right" %>
+      <h4><%= @user.first_name + ' ' + @user.last_name %></h4>
+  </tr>
+
+  <tr><td><strong class="col-xs-2 text-right">First Name: </strong><%= @user.first_name %></td></tr>
+  <tr><td><strong class="col-xs-2 text-right" >Last Name: </strong><%= @user.last_name %></td></tr>
+  <tr><td><strong class="col-xs-2 text-right">Email: </strong><%= mail_to @user.email %></td></tr>
+
+
+</table>

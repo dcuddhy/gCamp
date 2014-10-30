@@ -1,13 +1,15 @@
 class UsersController < ApplicationController
 
-  # this page should show...
-  # all of the users ever
   def index
     @users = User.all
   end
 
   def new
     @user = User.new
+  end
+
+  def show
+    @user = User.find(params[:id])
   end
 
   def edit
@@ -27,11 +29,19 @@ class UsersController < ApplicationController
     redirect_to users_path, notice: 'User was successfully created.'
   end
 
-
+  def destroy
+    @user = User.find(params[:id])
+    @user.destroy
+    redirect_to users_path, notice: "User Deleted Successfully"
+  end
 
 
 
   private
+
+  def user
+    @user = User.find(params[:id])
+  end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params

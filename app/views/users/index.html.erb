@@ -1,22 +1,12 @@
-<!--
-  have the HTML table, and the .each etc.... (checkout out gcamp's index page)
-
-  how do you show each user and all of the fields?
-
-  analogous to tasks/index.html.erb
- -->
-
-
 
  <div class= "page-header">
-
-<%= link_to 'New User', new_user_path, class: "btn btn-primary pull-right" %>
-<h2>Users</h2>
+  <%= link_to 'New User', new_user_path, class: "btn btn-primary pull-right" %>
+  <h2>Users</h2>
 </div>
 
 
 <% if notice.is_a? String %>
-<div class="text-center alert alert-info"><%= notice %></div>
+  <div class="text-center alert alert-info"><%= notice %></div>
 <% end %>
 
 
@@ -27,11 +17,10 @@
     </thead>
       <% @users.each do |user| %>
         <tr>
-        <td width="200px"><%= user.first_name %> <%= user.last_name %></td>
+        <td width="200px"><%= link_to user.first_name + ' ' + user.last_name, user_path(user) %></td>
         <td><%= mail_to user.email %></td>
         <td><%= link_to 'Edit', edit_user_path(user), class: "pull-right" %></td>
         </tr>
+
       <% end %>
-
-
 </table>
