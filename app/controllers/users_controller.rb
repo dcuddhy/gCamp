@@ -26,7 +26,7 @@ class UsersController < ApplicationController
   def update
     @user = User.find(params[:id])
     @user.update(user_params)
-    redirect_to users_path, notice: 'User was successfully created.'
+    redirect_to users_path, notice: 'User was successfully updated.'
   end
 
   def destroy
@@ -43,9 +43,9 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
   end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def user_params
-      params.require(:user).permit(:first_name, :last_name, :email)
-    end
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def user_params
+    params.require(:user).permit(:first_name, :last_name, :email)
+  end
 
 end

@@ -1,7 +1,12 @@
-<h4>I'm showing my project  </h4>
-<%= @project.name  %>
+<div class="page-header">
+  <% if notice.is_a? String %>
+    <div class="text-center alert alert-success"><%= notice %></div>
+  <% end %>
+</div>
+<h4> <span class="col-md-9"><%= @project.name %></span></h4>
 
 
-<%= link_to "Edit", edit_project_path(@project)  %>
 
-<%= link_to "Delete", project_path(@project), :method => :delete%>
+<%= link_to "Edit", edit_project_path(@project), class:"btn btn-info col-md-offset-1"  %>
+
+<%= link_to "Destroy", project_path(@project), class:"btn btn-danger", :method => :delete%>
