@@ -1,17 +1,27 @@
-
 <div class="page-header">
 <h3>Create Project</h3>
 </div>
 <br>
 
+<%= form_for(@project, html: {class: "form-horizontal"}) do |f| %>
+
+  <div class="form-group row">
+    <h4><%= f.label :name, "Name", class:"col-xs-1" %></h4>
+    <div class="col-xs-4">
+    <%= f.text_field :name, class:"form-control" %>
+    </div>
+  </div>
 
 
-<%= form_for @project do |f| %>
+<br>
 
-  <%= f.label :name %>
-  <%= f.text_field :name %>
-
-  <%= f.submit %>
+<div class="form-group">
+  <div class="col-sm-offset-1 col-sm-11">
+    <%= f.submit class:"btn btn-primary" %>
+  </div>
+</div>
 
 
 <% end %>
+
+</form>

@@ -16,7 +16,7 @@ end
     project_params = params.require(:project).permit(:name)
     @project = Project.new(project_params)
     @project.save
-    redirect_to @project, notice: 'User was successfully created.'
+    redirect_to @project, notice: 'Project was successfully created.'
   end
 
 
@@ -29,13 +29,13 @@ end
     project_params = params.require(:project).permit(:name)
     @project = Project.find(params[:id])
     @project.update(project_params)
-    redirect_to @project, notice: 'User was successfully edited.'
+    redirect_to @project, notice: 'Project was successfully edited.'
   end
 
   def destroy
     @project = Project.find(params[:id])
     @project.destroy
-    redirect_to projects_path, notice: 'User was successfully deleted.'
+    redirect_to projects_path, notice: 'Project was successfully deleted.'
   end
 
 
