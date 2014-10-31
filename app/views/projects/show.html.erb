@@ -1,2 +1,7 @@
 <h4>I'm showing my project  </h4>
 <%= @project.name  %>
+
+
+<%= link_to "Edit", edit_project_path(@project)  %>
+
+<%= link_to "Delete", project_path(@project), :method => :delete%>
