@@ -1,7 +1,18 @@
-ok here i am
-<p>
-  hello??
-</p>
-and here?
+<br>
+<br>
+<br>
+<br>
 
-<%= link_to "Add a Project", new_project_path %>
+<%= link_to "Add a Project", new_project_path, class:"btn btn-primary pull-right" %>
+<h4>Projects</h4>
+
+
+<table class="table">
+  <th>Name</th>
+    <% @projects.each do |project| %>
+      <tr>
+
+  <td><%= project.name %></td>
+      </tr>
+  <% end %>
+</table>
