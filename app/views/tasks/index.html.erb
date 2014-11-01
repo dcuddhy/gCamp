@@ -1,14 +1,13 @@
 
 <div class= "page-header">
 <div class= "pull-right">
-  <%= link_to "All", tasks_path %> |
-  <%= link_to " Incomplete", tasks_path(incomplete:"partial") %>
+  <%= link_to_if params[:filter], "All", tasks_path %> |
+  <%= link_to_if !params[:filter], "Incomplete", tasks_path(filter:"incomplete") %>
   <%= link_to 'New Task', new_task_path, class: "btn btn-primary" %>
 </div>
 
   <h2>Tasks</h2>
 </div>
-
 
 <table class="table datetime">
 
@@ -30,5 +29,3 @@
     <% end %>
   </tbody>
 </table>
-
- 

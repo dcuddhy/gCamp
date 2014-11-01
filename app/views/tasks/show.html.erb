@@ -11,10 +11,16 @@
 <br>
 
         <tr><td width="100%" class="pull-left"><strong>Description: </strong><%= @task.description %></td></tr>
-        <tr><td width="100%" class="pull-left"><strong>Due Date: </strong><%= @task.due_date %></td></tr>
+
+
+        <tr><td width="100%" class="pull-left"><strong>Due Date: </strong><%= @task.due_date.strftime("%m/%d/%Y") %></td></tr>
         <tr><td width="100%" class="pull-left"><strong>Complete: </strong><%= @task.complete %></td></tr>
       </tr>
 </table>
+
+
+
+
 
 
 
