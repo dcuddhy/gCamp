@@ -1,4 +1,11 @@
-<h1>Sign Up</h1>
+<div class="page-header">
+
+</div>
+
+<div class= "well form-horizontal col-md-4 col-sm-offset-4">
+
+<h2>Sign Up for gCamp!</h2>
+<br>
 
 <%= form_for @user, url: signup_path do |f| %>
 
@@ -10,29 +17,37 @@
     </ul>
   <% end %>
 
-  <div>
-    <%= f.label :email %>
-  </div>
-  <div>
-    <%= f.email_field :email %>
-  </div>
 
-  <div>
-    <%= f.label :password %>
-  </div>
-  <div>
-    <%= f.password_field :password %>
-  </div>
 
-  <div>
-    <%= f.label :password_confirmation %>
-  </div>
-  <div>
-    <%= f.password_field :password_confirmation %>
-  </div>
 
-  <div>
+<div>
+  <h5><%= f.label :email, "Email" %></h5>
+  <%= f.email_field :email, class:"form-control" %>
+</div>
+
+
+<div>
+  <h5><%= f.label :password, "Password" %></h5>
+  <%= f.password_field :password, class:"form-control" %>
+</div>
+
+
+
+<div>
+  <h5><%= f.label :password_confirmation, "Password Confirmation" %></h5>
+  <%= f.password_field :password_confirmation, class:"form-control" %>
+</div>
+
+<br>
+
+<div>
     <%= f.submit "Sign up" %>
-  </div>
+</div>
+
+
+
 
 <% end %>
+
+
+</div>

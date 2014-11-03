@@ -38,7 +38,9 @@
           <div class="navbar-brand"><%= link_to "gCamp", root_path %></div>
         </div>
           <div class="navbar-brand pull-right">
+
             <% if current_user %>
+            <%= link_to current_user.email, user_path(session[:user_id]) %>
               <%= link_to "Sign Out", signout_path %>
             <% else %>
             <%= link_to "Sign Up", signup_path %>

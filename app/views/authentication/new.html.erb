@@ -1,4 +1,11 @@
-<h1>Sign In</h1>
+<div class="page-header">
+
+
+</div>
+
+<div class= "well form-horizontal col-md-4 col-sm-offset-4">
+<h2>Sign into gCamp</h2>
+
 
 <%= form_tag signin_path do |f| %>
 
@@ -8,22 +15,32 @@
     </p>
   <% end %>
 
-  <div>
+
+
+
+<div>
     <%= label_tag :email %>
   </div>
   <div>
-    <%= email_field_tag :email %>
+    <%= email_field_tag :email, nil, class:"form-control" %>
   </div>
 
   <div>
     <%= label_tag :password %>
   </div>
   <div>
-    <%= password_field_tag :password %>
+    <%= password_field_tag :password, nil, class:"form-control" %>
   </div>
+
+<br>
 
   <div>
     <%= submit_tag "Sign in" %>
   </div>
 
+
+
 <% end %>
+
+
+</div>
