@@ -9,6 +9,13 @@ Rails.application.routes.draw do
   get "/about" => "pages#about", as: :about_gCamp
   get "/terms" => "pages#terms", as: :terms_gCamp
   get "/faq" => "pages#faq", as: :faq_gCamp
+  get '/sign-up' => 'registrations#new', as: :signup
+  post '/sign-up' => 'registrations#create'
+  get '/sign-in' => 'authentication#new', as: :signin
+  post '/sign-in' => 'authentication#create'
+  get '/sign-out' => 'authentication#destroy', as: :signout
+
+
 
 
 
