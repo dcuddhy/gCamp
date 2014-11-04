@@ -1,19 +1,21 @@
 <div class="page-header">
-<%= link_to "Add a Project", new_project_path, class:"btn btn-primary pull-right" %>
-<h2>Projects</h2>
+  <%= link_to "Add a Project", new_project_path, class:"btn btn-primary pull-right" %>
+  <h2>Projects</h2>
 </div>
 
 <% if notice.is_a? String %>
-
-<div class="text-center alert alert-success"><%= notice %></div>
+  <div class="text-center alert alert-success"><%= notice %></div>
 <% end %>
 
 <table class="table">
-  <th>Name</th>
-    <% @projects.each do |project| %>
-      <tr>
-
-  <td><%= link_to project.name, project_path(project) %></td>
-</tr>
-  <% end %>
+  <thead>
+    <th>Name</th>
+  </thead>
+    <tr>
+        <% @projects.each do |project| %>
+      <td>
+        <%= link_to project.name, project_path(project) %>
+      </td>
+    </tr>
+      <% end %>
 </table>

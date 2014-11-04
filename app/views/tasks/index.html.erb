@@ -10,10 +10,10 @@
 </div>
 
 <table class="table datetime">
-
-<tbody>
+<thead>
     <th>Description</th><th width="100px", class="text-center">Due Date</th><th>Complete</th><th></th><th></th><th></th>
     <% @tasks.each do |task| %>
+  </thead>
       <tr>
         <td><%= task.description %></td>
         <td width="100px", class="text-center">
@@ -21,11 +21,18 @@
             <%= task.due_date.strftime("%m/%d/%Y") %>
           <% end %>
         </td>
-        <td width="30px", class="text-center"><%= task.complete %></td>
-        <td width="30px"><%= link_to 'Show', task, class: "pull-right btn btn-success" %></td>
-        <td width="30px"><%= link_to 'Edit', edit_task_path(task), class: "pull-right btn btn-info" %></td>
-        <td width="30px"><%= link_to 'Destroy', task, class: "pull-right btn btn-danger", method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td width="30px", class="text-center">
+          <%= task.complete %>
+        </td>
+        <td width="30px">
+          <%= link_to 'Show', task, class: "pull-right btn btn-success" %>
+        </td>
+        <td width="30px">
+          <%= link_to 'Edit', edit_task_path(task), class: "pull-right btn btn-info" %>
+        </td>
+        <td width="30px">
+          <%= link_to 'Destroy', task, class: "pull-right btn btn-danger", method: :delete, data: { confirm: 'Are you sure?' } %>
+        </td>
       </tr>
     <% end %>
-  </tbody>
 </table>
