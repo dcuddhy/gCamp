@@ -1,11 +1,15 @@
+<div class="page-header">
+  <h2>FAQ</h2>
+</div>
+<br>
 
-<br>
-<br>
+
+
 
 
 
 
 <% @faqs.each do |faq| %>
-<p class="faq_question"><%= faq.question %></p>
+<p><strong><%= faq.question %></strong></p>
   <p><%= faq.answer %></p>
 <% end %>
