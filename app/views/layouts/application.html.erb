@@ -26,30 +26,30 @@
   <body>
 
 
-<!-- Main jumbotron for a primary marketing message or call to action -->
-<div class="jumbotron" style= "background-color: rgba(0, 0, 0, 0)">
+  <!-- Main jumbotron for a primary marketing message or call to action -->
+  <div class="jumbotron" style= "background-color: rgba(0, 0, 0, 0)">
 
-<div class="container" style= "background-color: rgba(0, 0, 0, 0)">
-  <%= yield %>
+  <div class="container" style= "background-color: rgba(0, 0, 0, 0)">
+    <%= yield %>
 
-    <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-      <div class="container">
-          <div class="navbar-brand"><%= link_to "gCamp", root_path %></div>
-          <div class="navbar-brand pull-right">
-            <% if current_user %>
-            <%= link_to "#{current_user.first_name} #{current_user.last_name}",
-                user_path(session[:user_id]) %> &nbsp; &nbsp;
-              <%= link_to "Sign Out", signout_path %>
-            <% else %>
-            <%= link_to "Sign Up", signup_path %>
-              |
-            <%= link_to "Sign In", signin_path %>
-          <% end %></div>
+      <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="container">
+            <div class="navbar-brand"><%= link_to "gCamp", root_path %></div>
+            <div class="navbar-brand pull-right">
+              <% if current_user %>
+              <%= link_to "#{current_user.first_name} #{current_user.last_name}",
+                  user_path(session[:user_id]) %> &nbsp; &nbsp;
+                <%= link_to "Sign Out", signout_path %>
+              <% else %>
+              <%= link_to "Sign Up", signup_path %>
+                |
+              <%= link_to "Sign In", signin_path %>
+            <% end %></div>
+          </div>
         </div>
       </div>
-    </div>
-</div>
-</div>
+  </div>
+  </div>
 
 
 
@@ -63,9 +63,9 @@
           <span class="tasks"><%= link_to "Tasks", tasks_path %> | </span>
           <span class="users"><%= link_to "Users", users_path %> | </span>
           <span class="projects"><%= link_to "Projects", projects_path %> </span>
-
         </div>
-        <div class="col-md-2 col-md-offset-2">
+
+        <div class="col-md-2 col-md-offset-2 box">
           <span><%= link_to "http://linkedin.com/in/drewcuddhy", target: "_blank" do %> </span>
                     <%= image_tag("Linked_In.png", width: "20em") %>
                 <% end %>
@@ -76,9 +76,10 @@
                     <%= image_tag("GitHub.png", width: "20em") %>
                 <% end %>
           <span><%= link_to "http://www.galvanize.it/school/", target: "_blank" do %> </span>
-                  <%= image_tag("g.png", width: "15em") %>
+                    <%= image_tag("g.png", width: "15em") %>
                 <% end %>
         </div>
+
       </footer>
     </div> <!-- /container -->
 
