@@ -1,54 +1,67 @@
-<%= form_for @user do |f| %>
+
+
+<div class= "form-horizontal col-md-10">
+<br>
+
+<%= form_for @user, url: signup_path do |f| %>
+
+  <% if @user.errors.present? %>
+    <ul>
+      <% @user.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  <% end %>
 
   <div class="form-group row">
-    <%= f.label :first_name, "First Name", class:"col-xs-2" %>
+    <%= f.label :first_name, class:"col-xs-3" %>
     <div class="col-xs-4">
     <%= f.text_field :first_name, class:"form-control" %>
     </div>
   </div>
 
-
-  <div class="field form-group row">
-    <%= f.label :last_name, "Last Name", class:"col-xs-2" %>
+  <div class="form-group row">
+    <%= f.label :last_name, class:"col-xs-3" %>
     <div class="col-xs-4">
-      <%= f.text_field :last_name, class:"form-control" %>
+    <%= f.text_field :last_name, class:"form-control" %>
     </div>
   </div>
-
-
-  <div class="field form-group row">
-    <%= f.label :email, "Email", class:"col-xs-2" %>
-    <div class="col-xs-4">
-      <%= f.text_field :email, class:"form-control" %>
-    </div>
-  </div>
-
-
-  <div class="field form-group row">
-    <%= f.label :password, "Password", class:"col-xs-2" %>
-    <div class="col-xs-4">
-      <%= f.password_field :password, class:"form-control" %>
-    </div>
-  </div>
-
-
-  <div class="field form-group row">
-    <%= f.label :password_confirmation, "Password Confirmation", class:"col-xs-2" %>
-    <div class="col-xs-4">
-      <%= f.password_field :password_confirmation, class:"form-control" %>
-    </div>
-  </div>
-
-
-<br>
 
   <div class="form-group row">
-    <div class="col-sm-offset-2 col-sm-10">
-      <%= f.submit class:"btn btn-primary " %>
-    </div>
+    <%= f.label :email, class:"col-xs-3" %>
+
+<div class="col-xs-4">
+    <%= f.email_field :email, class:"form-control" %>
+</div>
   </div>
 
+  <div class="form-group row">
+    <%= f.label :password, class:"col-xs-3" %>
+
+<div class="col-xs-4">
+    <%= f.password_field :password, class:"form-control" %>
+</div>
+  </div>
+
+  <div class="form-group row">
+    <%= f.label :password_confirmation, class:"col-xs-3" %>
+
+<div class="col-xs-4">
+    <%= f.password_field :password_confirmation, class:"form-control" %>
+</div>
+  </div>
+
+  <br>
+<div class="form-group row">
+<div class="col-sm-offset-3 col-sm-10">
+    <%= f.submit class:"btn btn-primary"  %>
+  </div>
+</div>
 
 <% end %>
+
+
+
+
 
 </form>
