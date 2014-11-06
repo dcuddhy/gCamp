@@ -25,30 +25,16 @@ feature "Users CRUD" do
     visit users_path
     expect(page).to have_content("barry@white.com")
 
-#EDIT
+#UPDATE
     click_on "Edit"
     fill_in "Last name", with: "Black"
     click_on "Update User"
+    expect(page).to have_content("Barry Black")
 
-
-
-
-
-    #
-    #
-    # click_on "Sign Out"
-    # expect(page).to have_content("Sign In")
-    #   save_and_open_page
-    #
-    #
-    # visit signin_path
-    # fill_in "Email", with: "barry@white.com"
-    # fill_in "Password", with: "pass"
-    # click_on "Sign in"
-    #   save_and_open_page
-    #
-    # expect(page).to have_content("Barry White")
-    #
+#DESTROY
+    click_on "Edit"
+    click_on "Delete"
+    expect(page).to have_no_content("Barry White")
 
 
   end
