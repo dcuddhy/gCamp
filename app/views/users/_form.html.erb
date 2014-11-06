@@ -2,8 +2,9 @@
 
 <div class= "form-horizontal col-md-10">
 <br>
+i am here
 
-<%= form_for @user, url: signup_path do |f| %>
+<%= form_for(@user) do |f| %>
 
 <% if @user.errors.present? %>
   <ul>

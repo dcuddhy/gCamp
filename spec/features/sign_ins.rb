@@ -2,7 +2,7 @@ require 'rails_helper'
 
 
 
-feature "Sign Out" do
+feature "Sign Up Out & In" do
 
   scenario "User sign out" do
 
