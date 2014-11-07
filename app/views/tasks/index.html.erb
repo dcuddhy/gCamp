@@ -9,6 +9,12 @@
   <h2>Tasks</h2>
 </div>
 
+
+<% if notice.is_a? String %>
+  <div class="text-center alert alert-info"><%= notice %></div>
+<% end %>
+
+
 <table class="table datetime">
 <thead>
     <th>Description</th><th width="100px", class="text-center">Due Date</th><th>Complete</th><th></th><th></th><th></th>
