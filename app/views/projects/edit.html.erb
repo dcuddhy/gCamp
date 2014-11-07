@@ -3,6 +3,14 @@
 <h2>Edit Projects</h2>
 </div>
 
+  <% if @project.errors.present? %>
+    <ul class="text-danger">
+      <% @project.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  <% end %>
+
 <%= form_for(@project, html: {class: "form-horizontal"}) do |f| %>
 
 

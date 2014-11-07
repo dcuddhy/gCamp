@@ -13,10 +13,12 @@ def show
 end
 
   def create
-    project_params = params.require(:project).permit(:name)
-    @project = Project.new(project_params)
-    @project.save
-    redirect_to @project, notice: 'Project was successfully created.'
+    @project = Project.new(params.require(:project).permit(:name,))
+    if @project.save
+      redirect_to @project, notice: 'Project was successfully created.'
+    else
+      render :new
+    end
   end
 
 
@@ -28,8 +30,11 @@ end
   def update
     project_params = params.require(:project).permit(:name)
     @project = Project.find(params[:id])
-    @project.update(project_params)
-    redirect_to @project, notice: 'Project was successfully edited.'
+    if @project.update(project_params)
+      redirect_to @project, notice: 'Project was successfully edited.'
+    else
+      render :edit
+    end
   end
 
   def destroy
