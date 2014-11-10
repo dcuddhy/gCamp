@@ -1,8 +1,8 @@
 
 <div class= "page-header">
 <div class= "pull-right">
-  <%= link_to_if params[:filter], "All", tasks_path %> |
-  <%= link_to_if !params[:filter], "Incomplete", tasks_path(filter:"incomplete") %>
+  <%= link_to_if !params[:filter], "All", tasks_path(filter:"all") %> |
+  <%= link_to_if params[:filter], "Incomplete", tasks_path %>
   <%= link_to 'New Task', new_task_path, class: "btn btn-primary" %>
 </div>
 

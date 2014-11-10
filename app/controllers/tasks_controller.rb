@@ -5,9 +5,9 @@ class TasksController < ApplicationController
   # GET /tasks.json
   def index
     if params[:filter]
-       @tasks = Task.all.where(complete:"false")
-    else
        @tasks = Task.all
+    else
+       @tasks = Task.all.where(complete:"false")
     end
   end
 
