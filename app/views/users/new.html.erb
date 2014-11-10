@@ -9,7 +9,7 @@
 <%= form_for @user, url: users_path(@user) do |f| %>
 
 <% if @user.errors.present? %>
-  <ul class="text-danger">
+  <ul class="alert alert-danger">
     <% @user.errors.full_messages.each do |message| %>
       <li><%= message %></li>
     <% end %>

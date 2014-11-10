@@ -1,7 +1,7 @@
 <%= form_for(@task, html: {class: "form-horizontal"}) do |f| %>
 
 <% if @task.errors.present? %>
-  <ul class="text-danger">
+  <ul class="alert alert-danger">
     <% @task.errors.full_messages.each do |message| %>
       <li><%= message %></li>
     <% end %>

@@ -1,6 +1,7 @@
 class TasksController < ApplicationController
   before_action :set_task, only: [:show, :edit, :update, :destroy]
 
+
   # GET /tasks
   # GET /tasks.json
   def index
@@ -71,4 +72,9 @@ class TasksController < ApplicationController
     def task_params
       params.require(:task).permit(:description, :complete, :due_date)
     end
+
+
+
+
+
 end

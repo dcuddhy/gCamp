@@ -10,7 +10,7 @@
 <%= form_for(@user) do |f| %>
 
 <% if @user.errors.present? %>
-  <ul class="text-danger">
+  <ul class="alert alert-danger">
     <% @user.errors.full_messages.each do |message| %>
       <li><%= message %></li>
     <% end %>
