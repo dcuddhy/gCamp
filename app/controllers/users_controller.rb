@@ -1,4 +1,4 @@
-class UsersController < ApplicationController
+class UsersController < ApplicationController 
 
   def index
     @users = User.all
@@ -37,7 +37,7 @@ class UsersController < ApplicationController
       redirect_to users_path, notice: 'User was successfully updated.'
       else
       render :edit
-    end    
+    end
   end
 
   def destroy
