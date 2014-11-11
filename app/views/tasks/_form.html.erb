@@ -1,12 +1,11 @@
+<div class="page-header">
+  <h2><% title %> Task</h2>
+</div>
+
 <%= form_for(@task, html: {class: "form-horizontal"}) do |f| %>
 
-<% if @task.errors.present? %>
-  <ul class="alert alert-danger">
-    <% @task.errors.full_messages.each do |message| %>
-      <li><%= message %></li>
-    <% end %>
-  </ul>
-<% end %>
+<%= render "layouts/errors", object: @task %>
+
 
 
   <div class="field form-group">

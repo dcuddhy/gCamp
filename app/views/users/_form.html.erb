@@ -6,13 +6,8 @@
 
 <%= form_for(@user) do |f| %>
 
-<% if @user.errors.present? %>
-  <ul class="alert alert-danger">
-    <% @user.errors.full_messages.each do |message| %>
-      <li><%= message %></li>
-    <% end %>
-  </ul>
-<% end %>
+<%= render "layouts/errors", object: @user %>
+
 
 <div class="form-group row">
   <%= f.label :first_name, class:"col-xs-3" %>
