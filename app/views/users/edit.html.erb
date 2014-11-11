@@ -1,79 +1,8 @@
-<div class="page-header">
-  <h2>Edit Users</h2>
-</div>
 
-
-
-<div class= "form-horizontal col-md-10">
-<br>
-
-<%= form_for(@user) do |f| %>
-
-<% if @user.errors.present? %>
-  <ul class="alert alert-danger">
-    <% @user.errors.full_messages.each do |message| %>
-      <li><%= message %></li>
-    <% end %>
-  </ul>
-<% end %>
-
-<div class="form-group row">
-  <%= f.label :first_name, class:"col-xs-3" %>
-  <div class="col-xs-4">
-  <%= f.text_field :first_name, class:"form-control" %>
-  </div>
-</div>
-
-<div class="form-group row">
-  <%= f.label :last_name, class:"col-xs-3" %>
-  <div class="col-xs-4">
-  <%= f.text_field :last_name, class:"form-control" %>
-  </div>
-</div>
-
-<div class="form-group row">
-  <%= f.label :email, class:"col-xs-3" %>
-  <div class="col-xs-4">
-  <%= f.email_field :email, class:"form-control" %>
-  </div>
-</div>
-
-<div class="form-group row">
-  <%= f.label :password, class:"col-xs-3" %>
-  <div class="col-xs-4">
-  <%= f.password_field :password, class:"form-control" %>
-  </div>
-</div>
-
-<div class="form-group row">
-  <%= f.label :password_confirmation, class:"col-xs-3" %>
-  <div class="col-xs-4">
-  <%= f.password_field :password_confirmation, class:"form-control" %>
-  </div>
-</div>
+  <%= render 'form', title: "Edit" %>
 
 <br>
 
-<div class="form-group row">
-  <div class="col-xs-offset-3 col-sm-10">
-  <%= f.submit class:"btn btn-primary"  %>
+  <div class="text-center well col-sm-offset-3 col-sm-4">
+    <%= link_to 'Delete', user_path, method: :delete, class: "btn btn-danger " %>
   </div>
-</div>
-
-<% end %>
-
-
-
-
-
-</form>
-
-
-<br>
-
-<div class="text-center well col-sm-offset-3 col-sm-4">
-  <td><%= link_to 'Delete', user_path, method: :delete, class: "btn btn-danger " %></td>
-</div>
-
-<br><br><br>
-<!-- # <%= link_to 'Back', users_path %> -->
