@@ -20,10 +20,17 @@ require "rails_helper.rb"
     expect(task.errors[:due_date].present?).to eq(false)
   end
 
-  it "validates presence of task future due date" do
+  it "validates presence of task past due date" do
     task = Task.new(description:"MY TASK", due_date:"12/12/1014")
     task.valid?
     expect(task.errors[:due_date].present?).to eq(true)
+  end
+
+  it "validates ability for existing task to have past due date" do
+    task = Task.create(description:"MY TASK", due_date:"12/12/3014")
+    task.update(description:"MY TASK", due_date:"12/12/1014")
+    task.valid?
+    expect(task.errors[:due_date].present?).to eq(false)
   end
 
 end
