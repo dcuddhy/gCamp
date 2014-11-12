@@ -1,4 +1,4 @@
-class UsersController < ApplicationController 
+class UsersController < ApplicationController
 
   def index
     @users = User.all
@@ -17,6 +17,8 @@ class UsersController < ApplicationController
   end
 
   def create
+    Rails.logger.info("In users#create: " + params.inspect)
+
     @user = User.new(params.require(:user).permit(
       :first_name,
       :last_name,
@@ -24,7 +26,7 @@ class UsersController < ApplicationController
       :password,
       :password_confirmation))
     if @user.save
-      redirect_to users_path, notice: 'User was successfully created.'
+      redirect_to root_path, notice: 'User was successfully created.'
     else
       render :new
     end
