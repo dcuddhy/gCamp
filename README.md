@@ -1,8 +1,10 @@
-== README
+== README <br>
+
+[![Build Status](https://travis-ci.org/dcuddhy/gCamp.svg?branch=master)](https://travis-ci.org/dcuddhy/gCamp)
 
 
 * * * * * * * * * * * *
-See gCamp live @ http://damp-ocean-4595.herokuapp.com/
+https://floating-gorge-3757.herokuapp.com/
 * * * * * * * * * * * *
 
 
