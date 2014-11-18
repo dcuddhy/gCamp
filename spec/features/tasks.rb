@@ -6,7 +6,7 @@ feature "Tasks CRUD" do
 
   scenario "Task Create Read Update Destroy" do
 
-    visit tasks_path
+    visit project_tasks_path(@project)
     click_on "New Task"
     expect(page).to have_content("New Task")
 
@@ -19,7 +19,7 @@ feature "Tasks CRUD" do
       # save_and_open_page
 
 #READ
-    visit tasks_path
+    visit project_tasks_path(@project)
     expect(page).to have_content("Sushi")
 
 #UPDATE
@@ -30,7 +30,7 @@ feature "Tasks CRUD" do
     expect(page).to have_content("true")
 
 #DESTROY
-    visit tasks_path
+    visit project_tasks_path(@project)
     click_on "Destroy"
     expect(page).to have_no_content("Nigiri")
 

@@ -13,7 +13,7 @@ def show
 end
 
   def create
-    @project = Project.new(params.require(:project).permit(:name,))
+    @project = Project.new(params.require(:project).permit(:name))
     if @project.save
       redirect_to @project, notice: 'Project was successfully created.'
     else
@@ -28,9 +28,8 @@ end
   end
 
   def update
-    project_params = params.require(:project).permit(:name)
     @project = Project.find(params[:id])
-    if @project.update(project_params)
+    if @project.update(params.require(:project).permit(:name))
       redirect_to @project, notice: 'Project was successfully edited.'
     else
       render :edit

@@ -1,9 +1,9 @@
 
 <div class= "page-header">
 <div class= "pull-right">
-  <%= link_to_if !params[:filter], "All", tasks_path(filter:"all") %> |
-  <%= link_to_if params[:filter], "Incomplete", tasks_path %>
-  <%= link_to 'New Task', new_task_path, class: "btn btn-primary" %>
+  <%= link_to_if !params[:filter], "All", project_tasks_path(filter:"all") %> |
+  <%= link_to_if params[:filter], "Incomplete", project_tasks_path %>
+  <%= link_to 'New Task', new_project_task_path, class: "btn btn-primary" %>
 </div>
 
   <h2>Tasks</h2>
@@ -31,13 +31,17 @@
           <%= task.complete %>
         </td>
         <td width="30px">
-          <%= link_to 'Show', task, class: "pull-right btn btn-success" %>
+
+
+
+
+          <%= link_to 'Show', project_task_path(@project, task), class: "pull-right btn btn-success" %>
         </td>
         <td width="30px">
-          <%= link_to 'Edit', edit_task_path(task), class: "pull-right btn btn-info" %>
+          <%= link_to 'Edit', edit_project_task_path(@project, task), class: "pull-right btn btn-info" %>
         </td>
         <td width="30px">
-          <%= link_to 'Destroy', task, class: "pull-right btn btn-danger", method: :delete, data: { confirm: 'Are you sure?' } %>
+          <%= link_to 'Destroy', project_task_path(@project, task), class: "pull-right btn btn-danger", method: :delete, data: { confirm: 'Are you sure?' } %>
         </td>
       </tr>
     <% end %>

@@ -1,9 +1,10 @@
 Rails.application.routes.draw do
 
-  resources :tasks
-  resources :users
-  resources :projects
 
+  resources :users
+  resources :projects do
+    resources :tasks
+  end
 
   root "pages#index"
   get "/about" => "pages#about", as: :about_gCamp
