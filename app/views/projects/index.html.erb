@@ -9,13 +9,19 @@
 
 <table class="table">
   <thead>
-    <th>Name</th>
+    <th class="col-sm-2">Name</th><th class="text-center col-sm-1">Tasks</th><th class="col-sm-4"></th>
   </thead>
     <tr>
         <% @projects.each do |project| %>
       <td>
 
-        <%= link_to project.name, project_tasks_path(project) %>
+        <%= link_to project.name, project_path(project) %>
+      </td>
+      <td class="text-center col-sm-1">
+        <%= link_to (project.tasks.count), project_tasks_path(project) %>
+      </td>
+      <td class="text-center col-sm-8">
+
       </td>
     </tr>
       <% end %>
