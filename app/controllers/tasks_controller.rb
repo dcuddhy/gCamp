@@ -38,7 +38,6 @@ class TasksController < ApplicationController
     respond_to do |format|
       if @task.save
         format.html { redirect_to project_tasks_path(@project, @task), notice: 'Task was successfully created.' }
-
       else
         format.html { render :new }
       end
