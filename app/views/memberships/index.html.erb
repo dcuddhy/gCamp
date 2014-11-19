@@ -1,0 +1,48 @@
+
+<div class= "page-header">
+  <h2>Memberships for <%= @project.name %></h2>
+</div>
+
+
+<ol class="breadcrumb">
+  <li><%= link_to "Projects", projects_path %></li>
+  <li><%= link_to  @project.name, project_path(@project) %></li>
+  <li class="active">Memberships</li>
+</ol>
+
+
+<div class="well form-inline">
+<%= form_for [@project, @membership] do |f| %>
+
+  <div class="form-group">
+    <%= f.label :user_id %>
+    <em>
+    <%= f.collection_select(
+        :user_id,
+        User.all,
+        :id,
+        :first_name,
+        {include_blank: false},
+        {class: "form-control"}
+        ) %>
+    </em>
+  </div>
+
+  <div class="form-group">
+    <%= f.select :role, ["owner", "member"], class: "dropdown" %>
+  </div>
+
+  <%= f.submit class:"btn btn-primary" %>
+
+<% end %>
+</div>
+
+<table>
+  <tr>
+<br>
+<% @memberships.each do |m| %>
+  <td><%= m.user.first_name %></td>
+  <td><%= m.role %></td>
+  </tr>
+<% end %>
+</table>

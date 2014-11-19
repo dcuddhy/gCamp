@@ -6,4 +6,9 @@ validates :email, presence: true, uniqueness: true
 validates_uniqueness_of :email, case_sensitive: false
   has_secure_password
 
+  has_many :memeberships
+  has_many :projects, through: :memberships
+
+
+
 end
