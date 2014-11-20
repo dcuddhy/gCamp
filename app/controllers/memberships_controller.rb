@@ -13,7 +13,7 @@ class MembershipsController < ApplicationController
     @membership = @project.memberships.new(params.require(:membership).permit(:project_id, :user_id, :role))
     if @membership.save
       redirect_to project_memberships_path(@project, @membership),
-      notice: " was successfully added!"
+      notice: " #{@membership.user.first_name} was added successfully!"
     else
       render :index
     end
@@ -31,7 +31,7 @@ class MembershipsController < ApplicationController
 
     if @membership.update(params.require(:membership).permit(:project_id, :user_id, :role))
       redirect_to project_memberships_path(@project, @membership),
-      notice: " was successfully edited!"
+      notice: " #{@membership.user.first_name} was updated successfully!"
     else
       render :index
     end
@@ -41,7 +41,7 @@ class MembershipsController < ApplicationController
     @membership = @project.memberships.find(params[:id])
     @membership.destroy
     redirect_to project_memberships_path(@project, @membership),
-    notice: " was removed successfully!"
+    notice: " #{@membership.user.first_name} was removed successfully!"
   end
 
   private

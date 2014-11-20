@@ -16,7 +16,6 @@ feature "Tasks CRUD" do
     click_on "Create Task"
 
     expect(page).to have_content("Sushi")
-      # save_and_open_page
 
 #READ
     visit project_tasks_path(@project)

@@ -13,7 +13,6 @@ feature "Projects CRUD" do
     click_on "Create Project"
 
     expect(page).to have_content("Skeg")
-      save_and_open_page
 
 # #READ
     expect(page).to have_content("Skeg")

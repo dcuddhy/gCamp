@@ -19,7 +19,6 @@ feature "Users CRUD" do
     click_on "Create User"
 
     expect(page).to have_content("Barry White")
-      save_and_open_page
 
 #READ
     visit users_path
