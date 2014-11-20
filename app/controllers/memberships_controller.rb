@@ -22,12 +22,15 @@ class MembershipsController < ApplicationController
   end
 
   def update
-    @membership = @project.memberships.find(params[:project_id])
-    @membership.save
+    @membership = @project.memberships.find(params[:id])
+    @membership.update(params.require(:membership).permit(:project_id, :user_id, :role))
     redirect_to project_memberships_path(@project, @membership)
   end
 
   def destroy
+    @membership = @project.memberships.find(params[:id])
+    @membership.destroy
+    redirect_to project_memberships_path(@project, @membership)
   end
 
   private

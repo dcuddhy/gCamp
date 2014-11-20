@@ -1,7 +1,8 @@
-
 <div class= "page-header">
   <h2>Memberships for <%= @project.name %></h2>
 </div>
+
+<%= render "layouts/errors", object: @membership %>
 
 
 <ol class="breadcrumb">
@@ -22,14 +23,14 @@
         User.all,
         :id,
         :first_name,
-        {include_blank: false},
+        {include_blank: true},
         {class: "form-control"}
         ) %>
     </em>
   </div>
 
   <div class="form-group">
-    <%= f.select :role, ["owner", "member"], class: "dropdown" %>
+    <%= f.select :role, ["member", "owner"],{}, {class: "form-control"} %>
   </div>
 
   <%= f.submit class:"btn btn-primary" %>
@@ -38,11 +39,20 @@
 </div>
 
 <table>
-  <tr>
-<br>
-<% @memberships.each do |m| %>
-  <td><%= m.user.first_name %></td>
-  <td><%= m.role %></td>
-  </tr>
-<% end %>
+      <tr>
+      <br>
+    <!-- <% @project.users.each do |user| %> and add this to the next line "user"..remove '@'-->
+      <% @memberships.each do |m| %>
+        <%= form_for [@project, m] do |f| %>
+          <td class="col-sm-2"><%= link_to "#{user.first_name} #{user.last_name}",
+          project_membership_path(@project, m) %></td>
+          <td class="col-sm-2"><%= f.select :role, ["member", "owner"],{},
+          {class: "form-control"} %></td>
+          <td class="col-sm-2"><%= f.submit %></td>
+          <td>&nbsp;&nbsp;<%= link_to "", project_membership_path(@project, m),
+          method: :delete, class:"glyphicon glyphicon-remove" %></td>
+      </tr>
+    <!-- <% end %> -->
+    <% end %>
+  <% end %>
 </table>
