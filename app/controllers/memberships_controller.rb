@@ -16,6 +16,7 @@ class MembershipsController < ApplicationController
   end
 
   def show
+    @membership = @project.memberships.find(params[:id])  
   end
 
   def edit
