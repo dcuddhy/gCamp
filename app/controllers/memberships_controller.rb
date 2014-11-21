@@ -28,7 +28,6 @@ class MembershipsController < ApplicationController
 
   def update
     @membership = @project.memberships.find(params[:id])
-
     if @membership.update(params.require(:membership).permit(:project_id, :user_id, :role))
       redirect_to project_memberships_path(@project, @membership),
       notice: " #{@membership.user.first_name} was updated successfully!"

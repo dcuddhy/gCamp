@@ -13,7 +13,8 @@ def show
 end
 
   def create
-    @project = Project.new(params.require(:project).permit(:name))
+    project_params = params.require(:project).permit(:name)
+    @project = Project.new(project_params)
     if @project.save
       redirect_to @project, notice: 'Project was successfully created.'
     else
