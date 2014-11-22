@@ -26,7 +26,11 @@
     <% @tasks.each do |task| %>
   </thead>
       <tr>
-        <td><%= task.description %></td>
+        <td><%= task.description %>
+          <%= link_to (task.comments.count),
+           project_task_path(@project, task) %>
+        </td>
+
         <td width="100px", class="text-center">
           <% if task.due_date %>
             <%= task.due_date.strftime("%m/%d/%Y") %>
@@ -36,10 +40,6 @@
           <%= task.complete %>
         </td>
         <td width="30px">
-
-
-
-
           <%= link_to 'Show', project_task_path(@project, task), class: "pull-right btn btn-success" %>
         </td>
         <td width="30px">

@@ -5,7 +5,8 @@ class Membership < ActiveRecord::Base
   validates :user, presence: true
   validates :role, presence: true
 
-  validates :user, uniqueness: {scope: :project, message: "has already been added"}
+  validates :user, uniqueness: {scope: :project,
+  message: "has already been added"}
 
 
 end

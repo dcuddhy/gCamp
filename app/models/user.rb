@@ -9,6 +9,8 @@ validates_uniqueness_of :email, case_sensitive: false
   has_many :memberships
   has_many :projects, through: :memberships
 
+  has_many :tasks
+  has_many :comments
 
 
 end

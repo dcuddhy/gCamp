@@ -34,9 +34,47 @@
 
 
 
+<%= form_for [@project, @task, @comment], html: {class: "form-horizontal"} do |f| %>
+
+
+
+<div class="form-group row">
+  <div class="col-xs-offset-2 col-xs-4">
+  <%= f.text_area :details, autofocus: true, class:"form-control" %>
+  </div>
+</div>
+
+
+
+<div class="form-group row">
+  <div class="col-xs-offset-2 col-xs-10">
+    <%= f.submit class:"btn btn-primary" %>
+  </div>
+</div>
+
+<% end %>
+
+
+<table>
+  <th class="col-xs-2">Comments</th><th col="col-xs-9"></th>
+      <% @task.comments.each do |c|  %>
+  <tr>
+    <td class="col-xs-2">
+      <%= c.user_id %>
+    </td>
+    <td class="col-xs-offset-2 col="col-xs-9"">
+      <%= c.details %>
+    </td>
+  </tbody>
+  </tr>
+
+<% end %>
+
+</table>
 
 
 
 
+<br><br><br><br>
 <%= link_to 'Edit', edit_project_task_path(@project, @task) %> |
 <%= link_to 'Back', project_tasks_path(@project) %>

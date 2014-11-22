@@ -3,8 +3,10 @@ Rails.application.routes.draw do
 
   resources :users
   resources :projects do
-    resources :tasks
     resources :memberships
+    resources :tasks do
+      resources :comments
+    end
   end
 
   root "pages#index"
