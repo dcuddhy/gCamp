@@ -56,18 +56,23 @@
 
 
 <table>
-  <th class="col-xs-2">Comments</th><th col="col-xs-9"></th>
+
+  <th class="col-xs-2">Comments</th><th></th>
       <% @task.comments.each do |c|  %>
   <tr>
-    <td class="col-xs-2">
-      <%= c.user_id %>
+
+    <td>
+      <td class="col-xs-2 text-left">
+        <%= c.user_id  %>
+      </td>
     </td>
+
+
+
     <td class="col-xs-offset-2 col="col-xs-9"">
       <%= c.details %>
     </td>
-  </tbody>
   </tr>
-
 <% end %>
 
 </table>
