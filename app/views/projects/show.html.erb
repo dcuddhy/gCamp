@@ -1,19 +1,12 @@
-<div class="page-header">
-  <% if notice.is_a? String %>
-    <div class="text-center alert alert-success"><%= notice %></div>
-  <% end %>
+<div class= "page-header">
+  <div class= "pull-right col-md-2">
+    <%= link_to "Edit", edit_project_path(@project), class:"btn btn-info col-md-offset-1"  %>
+    <%= link_to "Destroy", project_path(@project), class:"btn btn-danger", :method => :delete%>
+  </div>
+  <h2><%= @project.name %></h2>
 </div>
-<h2> <span class="col-md-9"><%= @project.name %></span></h2>
 
 
-
-
-<%= link_to "Edit", edit_project_path(@project), class:"btn btn-info col-md-offset-1"  %>
-
-<%= link_to "Destroy", project_path(@project), class:"btn btn-danger", :method => :delete%>
-
-<br>
-<br>
 <ol class="breadcrumb">
   <li><%= link_to "Projects", projects_path %></li>
   <li class="active"><%= @project.name %></li>

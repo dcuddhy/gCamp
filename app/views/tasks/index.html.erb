@@ -22,15 +22,15 @@
 
 <table class="table datetime">
 <thead>
-    <th>Description</th><th width="100px", class="text-center">Due Date</th><th>Complete</th><th></th><th></th><th></th>
+    <th>Description</th><th></th><th width="100px", class="text-center">Due Date</th><th>Complete</th><th></th><th></th><th></th>
     <% @tasks.each do |task| %>
   </thead>
       <tr>
-        <td><%= task.description %>
+        <td><%= link_to task.description, project_task_path(@project, task) %>
           <%= link_to (task.comments.count),
-           project_task_path(@project, task) %>
+           project_task_path(@project, task), class:"badge badge-info" %>
         </td>
-
+        <td></td>
         <td width="100px", class="text-center">
           <% if task.due_date %>
             <%= task.due_date.strftime("%m/%d/%Y") %>
@@ -40,13 +40,10 @@
           <%= task.complete %>
         </td>
         <td width="30px">
-          <%= link_to 'Show', project_task_path(@project, task), class: "pull-right btn btn-success" %>
-        </td>
-        <td width="30px">
           <%= link_to 'Edit', edit_project_task_path(@project, task), class: "pull-right btn btn-info" %>
         </td>
         <td width="30px">
-          <%= link_to 'Destroy', project_task_path(@project, task), class: "pull-right btn btn-danger", method: :delete, data: { confirm: 'Are you sure?' } %>
+          <%= link_to '', project_task_path(@project, task), class: "pull-right btn btn-danger", method: :delete, class:"glyphicon glyphicon-remove", data: { confirm: 'Are you sure?' } %>
         </td>
       </tr>
     <% end %>

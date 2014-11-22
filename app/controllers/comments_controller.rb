@@ -4,6 +4,10 @@ before_action do
   @task = Task.find(params[:task_id])
 end
 
+before_action do
+  @project = Project.find(params[:project_id])
+end
+
 
   def create
     comment_params = params.require(:comment).permit(:details)
@@ -11,7 +15,7 @@ end
     @comment.user_id = current_user.id
     @comment.task_id = @task.id
     if @comment.save
-      redirect_to root_path, notice: 'Comment was successfully created.'
+      redirect_to project_task_path(@project, @task), notice: 'Comment was successfully created.'
     else
       render :new
     end

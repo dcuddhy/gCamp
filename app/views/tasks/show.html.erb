@@ -1,85 +1,96 @@
-<h2>Task Details</h2>
+<div class= "page-header">
+    <div class= "pull-right">
+      <%= link_to 'Edit', edit_project_task_path(@project, @task), class: "btn btn-info" %>
+    </div>
+  <h2><%= @task.description %></h2>
+</div>
+
+
+    <% if notice.is_a? String %>
+      <div class="text-center alert alert-info">
+        <%= notice %>
+      </div>
+    <% end %>
+
+
+<ol class="breadcrumb">
+  <li><%= link_to "Projects", projects_path %></li>
+  <li><%= link_to  @project.name, project_path(@project) %></li>
+  <li><%= link_to  "Tasks", project_tasks_path(@project, @tasks) %></li>
+  <li class="active">Show</li>
+</ol>
 
 <table class="table" width="100%">
-      <tr>
-<% if notice.is_a? String %>
-
-<div class="text-center alert alert-info"><%= notice %></div>
-<% end %>
-<br>
-<br>
-<br>
-
-        <tr>
-          <td width="100%" class="pull-left">
-            <strong>Description: </strong>
-              <%= @task.description %>
-          </td>
-        </tr>
-
-
-        <tr>
-          <td width="100%" class="pull-left">
-            <strong>Due Date: </strong>
-              <%  if @task.due_date != nil %>
-                <%= @task.due_date.strftime("%m/%d/%Y") %>
-              <% end %>
-          </td>
-        </tr>
-
-
-        <tr><td width="100%" class="pull-left"><strong>Complete: </strong><%= @task.complete %></td></tr>
-      </tr>
+    <tr>
+      <td width="100%" class="pull-left">
+        <strong>Due Date: </strong>
+          <%  if @task.due_date != nil %>
+            <%= @task.due_date.strftime("%m/%d/%Y") %>
+          <% end %>
+      </td>
+    </tr>
+    <tr>
+      <td width="100%" class="pull-left">
+        <strong>Complete: </strong>
+        <%= @task.complete %>
+      </td>
+    </tr>
+  </tr>
 </table>
+
+
+
+
+
+
+
+
+
+<table class="table">
+  <thead>
+      <th>
+        Comments
+      </th>
+      <th class:"col-md-12"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @task.comments.where(:created_at != nil).each do |comment| %>
+      <tr>
+          <td class="col-md-3">
+            <%= link_to "#{comment.user.first_name} #{comment.user.last_name}", user_path(comment.user_id) %>
+            <br>
+            <span class="text-muted">
+              <%= time_ago_in_words (comment.updated_at) %> ago
+            </span>
+          </td>
+          <td class="col-md-9">
+            <%= comment.details %>
+          </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
 
 
 
 <%= form_for [@project, @task, @comment], html: {class: "form-horizontal"} do |f| %>
 
-
-
-<div class="form-group row">
-  <div class="col-xs-offset-2 col-xs-4">
-  <%= f.text_area :details, autofocus: true, class:"form-control" %>
+  <div class="form-group row">
+    <div class="col-md-offset-3 col-md-9">
+    <%= f.text_area :details, autofocus: true, class:"form-control" %>
+    </div>
   </div>
-</div>
 
-
-
-<div class="form-group row">
-  <div class="col-xs-offset-2 col-xs-10">
-    <%= f.submit class:"btn btn-primary" %>
+  <div class="form-group row">
+    <div class="col-md-offset-3 col-md-9">
+      <%= f.submit class:"btn btn-primary" %>
+    </div>
   </div>
-</div>
 
 <% end %>
 
 
-<table>
 
-  <th class="col-xs-2">Comments</th><th></th>
-      <% @task.comments.each do |c|  %>
-  <tr>
-
-    <td>
-      <td class="col-xs-2 text-left">
-        <%= c.user_id  %>
-      </td>
-    </td>
-
-
-
-    <td class="col-xs-offset-2 col="col-xs-9"">
-      <%= c.details %>
-    </td>
-  </tr>
-<% end %>
-
-</table>
-
-
-
-
-<br><br><br><br>
-<%= link_to 'Edit', edit_project_task_path(@project, @task) %> |
-<%= link_to 'Back', project_tasks_path(@project) %>
+<br><br>
