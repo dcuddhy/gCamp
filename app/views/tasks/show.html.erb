@@ -50,7 +50,7 @@
     </tr>
   </thead>
   <tbody>
-    <% @task.comments.each do |comment| %>
+    <% @task.comments.all.each do |comment| %>
       <tr>
           <td class="col-md-3">
             <%= link_to "#{comment.user.first_name} #{comment.user.last_name}", user_path(comment.user_id) %>

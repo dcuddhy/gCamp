@@ -16,7 +16,6 @@ class TasksController < ApplicationController
 
   def show
     @comment = @task.comments.new
-    @comments = @task.comments.all
   end
 
   def new
