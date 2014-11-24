@@ -12,8 +12,6 @@ feature "Projects CRUD" do
     fill_in "Name", with: "Skeg"
     click_on "Create Project"
 
-    expect(page).to have_content("Skeg")
-
 # #READ
     expect(page).to have_content("Skeg")
 

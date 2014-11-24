@@ -19,6 +19,7 @@ feature "Sign Up Out & In" do
 
     click_on "Sign Out"
     expect(page).to have_content("Sign In")
+    expect(page).to have_no_content("Sign Out")
 
 
     visit signin_path
@@ -26,7 +27,8 @@ feature "Sign Up Out & In" do
     fill_in "Password", with: "pass"
     click_on "Sign in"
 
-    expect(page).to have_content("Barry White")
+    expect(page).to have_no_content("Sign In")
+    expect(page).to have_content("Sign Out")
 
 
 
