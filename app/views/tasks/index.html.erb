@@ -43,7 +43,7 @@
           <%= link_to 'Edit', edit_project_task_path(@project, task), class: "pull-right btn btn-info" %>
         </td>
         <td width="30px">
-          <%= link_to '', project_task_path(@project, task), class: "pull-right btn btn-danger", method: :delete, class:"glyphicon glyphicon-remove", data: { confirm: 'Are you sure?' } %>
+          <%= link_to '', project_task_path(@project, task), class: "pull-right btn btn-danger", method: :delete, class:"glyphicon glyphicon-remove", id: "glyphicon-find-me", data: { confirm: 'Are you sure?' } %>
         </td>
       </tr>
     <% end %>

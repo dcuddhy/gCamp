@@ -6,45 +6,96 @@ feature "Tasks CRUD" do
 
   scenario "Task CREATE" do
 
-    visit project_tasks_path(@project)
+    visit projects_path
+    click_on "Add a Project"
+    expect(page).to have_content("Create Project")
+
+    fill_in "Name", with: "Origami Crane"
+    click_on "Create Project"
+    expect(page).to have_content("Origami Crane")
+
+    click_on "0 tasks"
+    expect(page).to have_content("Tasks for")
+
     click_on "New Task"
-    expect(page).to have_content("New Task")
-
     fill_in "Description", with: "Sushi"
-    fill_in "Due Date", with: "11/11/2014"
+    fill_in "Due Date", with: "11/11/3014"
     click_on "Create Task"
-
     expect(page).to have_content("Sushi")
+
   end
 
 
   scenario "Task READ" do
 
-    visit project_tasks_path(@project)
+    visit projects_path
+    click_on "Add a Project"
+    expect(page).to have_content("Create Project")
+
+    fill_in "Name", with: "Origami Crane"
+    click_on "Create Project"
+    expect(page).to have_content("Origami Crane")
+
+    click_on "0 tasks"
+    expect(page).to have_content("Tasks for")
+
     click_on "New Task"
-    expect(page).to have_content("New Task")
-
     fill_in "Description", with: "Sushi"
-    fill_in "Due Date", with: "11/11/2014"
+    fill_in "Due Date", with: "11/11/3014"
     click_on "Create Task"
-
     expect(page).to have_content("Sushi")
 
   end
 
-  
-#UPDATE
+
+  scenario "Task UPDATE" do
+
+    visit projects_path
+    click_on "Add a Project"
+    expect(page).to have_content("Create Project")
+
+    fill_in "Name", with: "Origami Crane"
+    click_on "Create Project"
+    expect(page).to have_content("Origami Crane")
+
+    click_on "0 tasks"
+    expect(page).to have_content("Tasks for")
+
+    click_on "New Task"
+    fill_in "Description", with: "Sushi"
+    fill_in "Due Date", with: "11/11/3014"
+    click_on "Create Task"
+    expect(page).to have_content("Sushi")
+
     click_on "Edit"
-    fill_in "Description", with: "Nigiri"
-    check 'Complete'
+    fill_in "Description", with: "Sushimi"
+    fill_in "Due Date", with: "11/11/3014"
     click_on "Update Task"
-    expect(page).to have_content("true")
+    expect(page).to have_content("Sushimi")
 
-#DESTROY
-    visit project_tasks_path(@project)
-    click_on "Destroy"
-    expect(page).to have_no_content("Nigiri")
+  end
 
+  scenario "Task DESTROY" do
+
+    visit projects_path
+    click_on "Add a Project"
+    expect(page).to have_content("Create Project")
+
+    fill_in "Name", with: "Origami Crane"
+    click_on "Create Project"
+    expect(page).to have_content("Origami Crane")
+
+    click_on "0 tasks"
+    expect(page).to have_content("Tasks for")
+
+    click_on "New Task"
+    fill_in "Description", with: "Sushi"
+    fill_in "Due Date", with: "11/11/3014"
+    click_on "Create Task"
+    expect(page).to have_content("Sushi")
+
+    click_link "glyphicon-find-me"
+    expect(page).to have_content("successfully destroyed")
 
   end
 
