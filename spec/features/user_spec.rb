@@ -4,7 +4,7 @@ require 'rails_helper'
 
 feature "Users CRUD" do
 
-  scenario "User CREATE" do
+  scenario "User creates a task" do
 
     visit users_path
     click_on "New User"
@@ -21,7 +21,7 @@ feature "Users CRUD" do
   end
 
 
-  scenario "User READ" do
+  scenario "User can view a task" do
 
     visit users_path
     click_on "New User"
@@ -38,7 +38,7 @@ feature "Users CRUD" do
   end
 
 
-  scenario "User UPDATE" do
+  scenario "User can update a task" do
 
     visit users_path
     click_on "New User"
@@ -59,7 +59,7 @@ feature "Users CRUD" do
 
   end
 
-  scenario "User UPDATE" do
+  scenario "User can delete a task" do
 
     visit users_path
     click_on "New User"
