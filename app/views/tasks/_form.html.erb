@@ -2,11 +2,6 @@
   <h2><% title %> Task</h2>
 </div>
 
-
-
-
-
-
 <%= form_for [@project, @task], html: {class: "form-horizontal col-xs-6"} do |f| %>
 
 <div class="col-xs-offset-4 col-xs-12">
@@ -15,8 +10,8 @@
 
 <div>
 
-  <div class="field form-group">
-    <%= f.label :description, class:"col-xs-4" %>
+  <div class="form-group">
+    <%= f.label :description, class:"col-xs-4 pull-left" %>
     <div class="col-xs-8">
       <%= f.text_field :description, class:"form-control" %>
     </div>

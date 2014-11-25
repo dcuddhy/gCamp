@@ -18,7 +18,6 @@
 <%= form_for [@project, @membership] do |f| %>
 
   <div class="form-group">
-    <em>
     <%= f.collection_select(
         :user_id,
         User.all,
@@ -27,7 +26,6 @@
         {include_blank: "Please select a user"},
         {class: "form-control"}
         ) %>
-    </em>
   </div>
 
   <div class="form-group">
@@ -41,26 +39,26 @@
 
 <table>
       <tr>
-      <br>
       <% @project.users.each do |u| %>
         <% u.memberships.where(project_id: @project.id).each do |m| %>
           <%= form_for [@project, m] do |f| %>
-            <td class="col-sm-2">
+            <td class="col-sm-2"><br>
               <%= link_to "#{u.first_name} #{u.last_name}",
               project_membership_path(@project, m) %>
             </td>
-            <td class="col-sm-2">
+            <td class="col-sm-2"><br>
               <%= f.select :role, ["member", "owner"],{},
               {class: "form-control"} %>
             </td>
-            <td class="col-sm-2">
+            <td class="col-sm-2"><br>
               <%= f.submit class:"btn btn-primary"%>
             </td>
-            <td><%= link_to "", project_membership_path(@project, m),
+            <td><br><%= link_to "", project_membership_path(@project, m),
             method: :delete, class:"glyphicon glyphicon-remove", data: { confirm: 'Are you sure?' } %>
             </td>
       </tr>
           <% end %>
         <% end %>
       <% end %>
+
 </table>
