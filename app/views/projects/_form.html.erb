@@ -1,28 +1,27 @@
-
 <div class="page-header">
   <h2><%= title %> Project</h2>
 </div>
 
 
+<%= form_for [@project], html: {class: "form-horizontal"} do |f| %>
 
-<%= form_for [@project], html: {class: "form-horizontal col-xs-6"} do |f| %>
-
-  <div class="col-xs-offset-2 col-xs-12">
-    <%= render "layouts/errors", object: @project %>
-  </div>
-
-  <div>
-    <h4><%= f.label :name, "Name", class:"col-xs-2" %></h4>
-    <div class="col-xs-8">
-    <%= f.text_field :name, class:"form-control" %><br>
+  <div class="form-group">
+    <div class="col-xs-offset-1 col-xs-6">
+      <%= render "layouts/errors", object: @project %>
     </div>
   </div>
 
-  <div>
-    <div class="col-sm-offset-2 col-sm-10">
-      <%= f.submit class:"btn btn-primary" %><br>
+  <div class="form-group">
+    <%= f.label :name, class:"col-xs-1" %>
+    <div class="col-xs-4">
+      <%= f.text_field :name, class:"form-control" %>
     </div>
   </div>
 
+  <div class="form-group">
+    <div class="col-xs-offset-1  col-xs-4">
+      <%= f.submit class:"btn btn-primary" %>
+    </div>
+  </div>
 
 <% end %>
