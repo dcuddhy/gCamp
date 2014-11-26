@@ -1,7 +1,6 @@
 <div class= "page-header">
-  <div class= "pull-right col-md-2">
+  <div class= "pull-right">
     <%= link_to "Edit", edit_project_path(@project), class:"btn btn-info col-md-offset-1"  %>
-    <%= link_to "Destroy", project_path(@project), class:"btn btn-danger", :method => :delete%>
   </div>
   <h2><%= @project.name %></h2>
 </div>
@@ -18,3 +17,16 @@
 <br><br>
 
 <%= link_to pluralize(@project.memberships.count, "member"), project_memberships_path(@project) %>
+
+<br><br>
+<div class="well">
+<strong>Delete Project</strong>
+<br><br>
+  Deleting this project will also delete
+  <%= pluralize(Membership.count, "Membership") %>,
+  <%= pluralize(Task.count, "Task") %>,
+and associated comments.
+<br><br>
+
+<%= link_to "Destroy", project_path(@project), class:"btn btn-danger", :method => :delete%>
+</div>

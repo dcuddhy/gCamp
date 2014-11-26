@@ -8,13 +8,9 @@
 <br>
 <%= form_for @user, url: signup_path do |f| %>
 
-  <% if @user.errors.present? %>
-    <ul>
-      <% @user.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-    </ul>
-  <% end %>
+
+<%= render "layouts/errors", object: @user %>
+
 
   <div>
     <%= f.label :first_name %>
