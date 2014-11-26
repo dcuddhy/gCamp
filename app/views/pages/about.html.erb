@@ -7,5 +7,14 @@
     <h2>About</h2>
     <p>Get Organized and increase productivity with your team</p>
     <%= image_tag "conf.png" %>
+    <br><br><br>
   </center>
+
+    <%= pluralize(Project.count, "Project") %>,
+    <%= pluralize(Task.count, "Task") %>,
+    <%= pluralize(Membership.count, "Project Member") %>,
+    <%= pluralize(User.count, "User") %>,
+    <%= pluralize(Comment.count, "Comment") %>,
+
+
 </div>

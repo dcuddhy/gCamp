@@ -16,7 +16,9 @@ class User < ActiveRecord::Base
 
 
   has_many :tasks
-  has_many :comments
+  has_many :comments, dependent: :nullify
 
+
+#has_many memberships and has many tasks may not be necessary
 
 end

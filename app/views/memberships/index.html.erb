@@ -41,7 +41,7 @@
           <%= form_for [@project, m] do |f| %>
             <td class="col-sm-2"><br>
               <%= link_to "#{u.first_name} #{u.last_name}",
-              project_membership_path(@project, m) %>
+              user_path(u) %>
             </td>
             <td class="col-sm-2"><br>
               <%= f.select :role, ["member", "owner"],{},
