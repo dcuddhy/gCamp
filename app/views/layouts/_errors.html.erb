@@ -1,5 +1,5 @@
-<div class="alert alert-danger">
   <% if object.errors.present? %>
+<div class="alert alert-danger">
 
       <strong>
         <%= pluralize(object.errors.count, "error") %>
@@ -15,6 +15,6 @@
           <% end %>
         </ul>
       </div>
-      
+
   <% end %>
 </div>
