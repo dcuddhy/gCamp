@@ -1,5 +1,10 @@
 <% if object.errors.present? %>
   <ul class="alert alert-danger">
+    <strong>
+      <%= pluralize(object.errors.count, "error") %>
+      prohibited this post from being saved:
+    </strong>
+
     <% object.errors.full_messages.each do |message| %>
       <li><%= message %></li>
     <% end %>
