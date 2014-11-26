@@ -32,32 +32,27 @@
 </table>
 
 
-<table class="table">
-  <thead>
-      <th>
-        Comments
-      </th>
-      <th class:"col-md-12"></th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @task.comments.all.each do |comment| %>
-      <tr>
-          <td class="col-md-3">
-            <%= link_to "#{comment.user.first_name} #{comment.user.last_name}", user_path(comment.user_id) %>
-            <br>
-            <span class="text-muted">
-              <%= time_ago_in_words (comment.updated_at) %> ago
-            </span>
-          </td>
-          <td class="col-md-9">
-            <%= comment.details %>
-          </td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+<h4>Comments</h4>
+<br>
+<% @task.comments.all.each do |comment| %>
+<div class="row">
 
+  <div class="col-xs-3">
+    <%= link_to "#{comment.user.first_name} #{comment.user.last_name}",
+    user_path(comment.user_id) %>
+    <div class="text-muted">
+      <%= time_ago_in_words (comment.updated_at) %> ago
+    </div>
+  </div>
+
+  <div class="col-xs-3">
+    <%= comment.details  %>
+  </div>
+
+</div>
+<br>
+
+<% end %>
 
 
 
