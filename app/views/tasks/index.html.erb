@@ -22,8 +22,7 @@
   </thead>
       <tr>
         <td><%= link_to task.description, project_task_path(@project, task) %>
-          <%= link_to (task.comments.count),
-           project_task_path(@project, task), class:"badge badge-info" %>
+          <span class="badge badge-info"><%= task.comments.count %></span>
         </td>
         <td></td>
         <td width="100px", class="text-center">
