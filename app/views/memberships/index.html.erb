@@ -10,9 +10,6 @@
 
 <%= render "layouts/errors", object: @membership %>
 
-<% if notice.is_a? String %>
-  <div class="text-center alert alert-info"><%= notice %></div>
-<% end %>
 
 <div class="well form-inline">
 <%= form_for [@project, @membership] do |f| %>

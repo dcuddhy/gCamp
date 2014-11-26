@@ -30,6 +30,15 @@
   <div class="jumbotron" style= "background-color: rgba(0, 0, 0, 0)">
 
   <div class="container" style= "background-color: rgba(0, 0, 0, 0)">
+
+    <br>
+
+    <% if notice.is_a? String %>
+    <div class="text-center alert alert-success">
+      <%= notice %>
+    </div>
+    <% end %>
+
     <%= yield %>
 
       <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
