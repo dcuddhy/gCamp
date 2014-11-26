@@ -4,7 +4,7 @@ require 'rails_helper'
 
 feature "Tasks CRUD" do
 
-  scenario "Task CREATE" do
+  scenario "User can create a task" do
 
     visit projects_path
     click_on "Add a Project"
@@ -26,7 +26,7 @@ feature "Tasks CRUD" do
   end
 
 
-  scenario "Task READ" do
+  scenario "User can see a task show page" do
 
     visit projects_path
     click_on "Add a Project"
@@ -48,7 +48,7 @@ feature "Tasks CRUD" do
   end
 
 
-  scenario "Task UPDATE" do
+  scenario "User can update a task" do
 
     visit projects_path
     click_on "Add a Project"
@@ -75,7 +75,7 @@ feature "Tasks CRUD" do
 
   end
 
-  scenario "Task DESTROY" do
+  scenario "user can destroy a task" do
 
     visit projects_path
     click_on "Add a Project"
