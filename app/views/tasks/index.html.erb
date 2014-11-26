@@ -9,7 +9,6 @@
   <h2>Tasks for <%= @project.name %></h2>
 </div>
 
-
 <ol class="breadcrumb">
   <li><%= link_to "Projects", projects_path %></li>
   <li><%= link_to  @project.name, project_path(@project) %></li>
@@ -18,7 +17,7 @@
 
 <table class="table datetime">
 <thead>
-    <th>Description</th><th></th><th width="100px", class="text-center">Due Date</th><th>Complete</th><th></th><th></th><th></th>
+    <th>Description</th><th></th><th width="100px", class="text-center">Due Date</th><th>Complete</th><th></th>
     <% @tasks.each do |task| %>
   </thead>
       <tr>
