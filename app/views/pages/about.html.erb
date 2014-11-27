@@ -1,20 +1,44 @@
-
-
-
-
 <div id="container">
-  <center>
-    <h2>About</h2>
-    <p>Get Organized and increase productivity with your team</p>
-    <%= image_tag "conf.png" %>
-    <br><br><br>
-  </center>
 
+    <h2>About</h2>
+
+</div>
+
+<div class="row">
+    <div class="col-md-4 pull-left">
+    <a href="#" class="thumbnail">
+      <%= image_tag "conf.png" %>
+    </a>
+  </div>
+
+
+<p class="col-md-8">
+  We are dedicated to the makers, the creators, the risk-takers.
+  We wake up in the middle of the night and furiously write down
+  ideas about how to make your online life better.
+</p>
+
+<p class="col-md-8">
+  When we're not hard at work, we're hard at play - we're the loud
+  ones in the bar, and we're always the ones shutting the place
+  down.  Human communication and collaboration is what drives
+  us, and it infuses every feature of gCamp.
+</p>
+
+<br><br><br><br><br>
+
+<p class="col-md-12">
+  gCamp is extremely active.  Check out our killer stats below!
+</p>
+
+
+<p class="col-md-12">
     <%= pluralize(Project.count, "Project") %>,
     <%= pluralize(Task.count, "Task") %>,
     <%= pluralize(Membership.count, "Project Member") %>,
     <%= pluralize(User.count, "User") %>,
     <%= pluralize(Comment.count, "Comment") %>,
+</p>
 
 
 </div>

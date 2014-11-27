@@ -23,10 +23,10 @@
 <strong>Delete Project</strong>
 <br><br>
   Deleting this project will also delete
-  <%= pluralize(Membership.count, "Membership") %>,
-  <%= pluralize(Task.count, "Task") %>,
-and associated comments.
+    <%= pluralize(@project.memberships.count, "membership") %>
+    <%= pluralize(@project.tasks.count, "task") %>
+  and associated comments.
 <br><br>
 
-<%= link_to "Destroy", project_path(@project), class:"btn btn-danger", :method => :delete%>
+<%= link_to "Destroy", project_path(@project), class:"btn btn-danger", method: :delete, data: { confirm: 'Are you sure?' } %>
 </div>
