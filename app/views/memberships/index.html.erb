@@ -8,7 +8,12 @@
   <li class="active">Memberships</li>
 </ol>
 
-<%= render "layouts/errors", object: @membership %>
+
+<div class="row">
+  <div class="col-xs-6">
+    <%= render "layouts/errors", object: @membership %>
+  </div>
+</div>
 
 
 <div class="well form-inline">
@@ -16,12 +21,12 @@
 
   <div class="form-group">
     <%= f.collection_select(
-        :user_id,
-        User.all,
-        :id,
-        :full_name,
-        {include_blank: "Please select a user"},
-        {class: "form-control"}
+          :user_id,
+          User.all,
+          :id,
+          :full_name,
+          {include_blank: "Please select a user"},
+          {class: "form-control"}
         ) %>
   </div>
 
@@ -29,13 +34,14 @@
     <%= f.select :role, ["member", "owner"],{}, {class: "form-control"} %>
   </div>
 
-  <%= f.submit class:"btn btn-primary" %>
+  <%= f.submit "Add New Member", class:"btn btn-primary" %>
 
 <% end %>
 </div>
 
+
 <table>
-      <tr>
+    <tr>
       <% @project.users.each do |u| %>
         <% u.memberships.where(project_id: @project.id).each do |m| %>
           <%= form_for [@project, m] do |f| %>
@@ -48,14 +54,16 @@
               {class: "form-control"} %>
             </td>
             <td class="col-sm-2"><br>
-              <%= f.submit class:"btn btn-primary"%>
+              <%= f.submit "Update", class:"btn btn-primary"%>
             </td>
-            <td><br><%= link_to "", project_membership_path(@project, m),
-            method: :delete, class:"glyphicon glyphicon-remove", data: { confirm: 'Are you sure?' } %>
+            <td><br>
+              <%= link_to "", project_membership_path(@project, m),
+                method: :delete,
+                data: { confirm: 'Are you sure?' },
+                class:"glyphicon glyphicon-remove"  %>
             </td>
-      </tr>
           <% end %>
         <% end %>
       <% end %>
-
+    </tr>
 </table>
