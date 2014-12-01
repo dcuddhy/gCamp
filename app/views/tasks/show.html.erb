@@ -58,7 +58,7 @@
 
 <% end %>
 
-
+<% if current_user %>
 <%= form_for [@project, @task, @comment], html: {class: "form-horizontal"} do |f| %>
 
   <div class="form-group">
@@ -74,7 +74,7 @@
   </div>
 
 <% end %>
-
+<% end %>
 
 
 <br><br>

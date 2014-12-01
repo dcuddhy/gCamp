@@ -48,6 +48,8 @@ class UsersController < ApplicationController
     redirect_to users_path, notice: "User Deleted Successfully"
   end
 
+  layout :determine_layout
+  
 
   private
 
@@ -58,6 +60,10 @@ class UsersController < ApplicationController
   # Never trust parameters from the scary internet, only allow the white list through.
   def user_params
     params.require(:user).permit(:first_name, :last_name, :email, :password, :password_confirmation)
+  end
+
+  def determine_layout
+    current_user ? "private" : "application"
   end
 
 end

@@ -47,6 +47,9 @@ class TasksController < ApplicationController
       redirect_to project_tasks_path(@project, @suitcase), notice: 'Task was successfully destroyed.'
   end
 
+  layout :determine_layout
+  
+
   private
     def set_task
       @task = @project.tasks.find(params[:id])
@@ -56,7 +59,9 @@ class TasksController < ApplicationController
       params.require(:task).permit(:description, :complete, :due_date)
     end
 
-
+    def determine_layout
+      current_user ? "private" : "application"
+    end
 
 
 

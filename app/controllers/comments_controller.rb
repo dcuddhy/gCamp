@@ -33,5 +33,12 @@ end
     redirect_to comments_path, notice: 'Comment was successfully deleted.'
   end
 
+  layout :determine_layout
+
+
+  private
+  def determine_layout
+    current_user ? "private" : "application"
+  end
 
 end

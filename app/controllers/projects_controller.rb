@@ -43,5 +43,13 @@ end
     redirect_to projects_path, notice: 'Project was successfully deleted.'
   end
 
+  layout :determine_layout
+  
+
+private
+  def determine_layout
+    current_user ? "private" : "application"
+  end
+
 
 end

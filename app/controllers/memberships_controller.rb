@@ -43,10 +43,17 @@ class MembershipsController < ApplicationController
     notice: " #{@membership.user.first_name} was removed successfully!"
   end
 
+  layout :determine_layout
+
+
   private
 
   def membership_params
     params.require(:membership).permit(:project_id, :user_id, :role)
+  end
+
+  def determine_layout
+    current_user ? "private" : "application"
   end
 
 end
