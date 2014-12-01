@@ -7,14 +7,14 @@
 <br>
 
 
-
 <!--  **** .casecmp for case insensitive****-->
 <%= form_for @user, html: {class: "form-horizontal"} do |f| %>
-<div class="form-group row">
-  <div class="col-xs-offset-3 col-sm-6">
-  <%= render "layouts/errors", object: @user %>
+
+  <div class="form-group row">
+    <div class="col-xs-offset-3 col-sm-6">
+    <%= render "layouts/errors", object: @user %>
+    </div>
   </div>
-</div>
 
   <div class="form-group row">
     <%= f.label :first_name, class:"col-xs-3 text-right" %>
@@ -60,3 +60,4 @@
   </div>
 
 <% end %>
+</div>

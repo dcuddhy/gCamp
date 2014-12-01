@@ -1,14 +1,5 @@
 <div class="page-header">
-
-
 </div>
-
-
-
-
-
-
-
 
 
 <div class= "well form-horizontal col-md-4 col-sm-offset-4">
@@ -23,28 +14,22 @@
     </p>
   <% end %>
 
-<div>
-    <%= label_tag :email %>
-  </div>
   <div>
+    <%= label_tag :email %>
     <%= email_field_tag :email, nil, class:"form-control" %>
   </div>
+  <br>
 
   <div>
     <%= label_tag :password %>
-  </div>
-  <div>
     <%= password_field_tag :password, nil, class:"form-control" %>
   </div>
-
 
 <br>
 
   <div>
     <%= submit_tag "Sign in", class:"btn btn-primary" %>
   </div>
-
-
 
 <% end %>
 
