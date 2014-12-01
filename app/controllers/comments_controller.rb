@@ -2,9 +2,6 @@ class CommentsController <ApplicationController
 
 before_action do
   @task = Task.find(params[:task_id])
-end
-
-before_action do
   @project = Project.find(params[:project_id])
 end
 
