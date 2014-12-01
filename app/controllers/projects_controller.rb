@@ -1,5 +1,8 @@
 class ProjectsController <ApplicationController
 
+
+
+
   def index
     @projects = Project.all.order(:name)
   end
@@ -16,7 +19,7 @@ end
     project_params = params.require(:project).permit(:name)
     @project = Project.new(project_params)
     if @project.save
-      redirect_to @project, notice: 'Project was successfully created.'
+      redirect_to project_tasks_path(@project), notice: 'Project was successfully created.'
     else
       render :new
     end
@@ -31,7 +34,7 @@ end
   def update
     @project = Project.find(params[:id])
     if @project.update(params.require(:project).permit(:name))
-      redirect_to @project, notice: 'Project was successfully edited.'
+      redirect_to project_tasks_path(@project), notice: 'Project was successfully edited.'
     else
       render :edit
     end
@@ -44,7 +47,7 @@ end
   end
 
   layout :determine_layout
-  
+
 
 private
   def determine_layout
