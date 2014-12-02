@@ -49,7 +49,7 @@ class UsersController < ApplicationController
   end
 
   layout :determine_layout
-  
+
 
   private
 
@@ -63,7 +63,7 @@ class UsersController < ApplicationController
   end
 
   def determine_layout
-    current_user ? "private" : "application"
+    current_user ? "application" : "public"
   end
 
 end

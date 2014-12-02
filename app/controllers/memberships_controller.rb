@@ -53,7 +53,7 @@ class MembershipsController < ApplicationController
   end
 
   def determine_layout
-    current_user ? "private" : "application"
+    current_user ? "application" : "public"
   end
 
 end

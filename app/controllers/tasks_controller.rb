@@ -48,7 +48,7 @@ class TasksController < ApplicationController
   end
 
   layout :determine_layout
-  
+
 
   private
     def set_task
@@ -60,7 +60,7 @@ class TasksController < ApplicationController
     end
 
     def determine_layout
-      current_user ? "private" : "application"
+      current_user ? "application" : "public"
     end
 
 
