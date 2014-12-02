@@ -1,12 +1,19 @@
 class MembershipsController < ApplicationController
 
   before_action do
+    if current_user
+    else
+      redirect_to signin_path, notice: 'You must be logged in to access that action'
+    end
+  end
+
+  before_action do
     @project = Project.find(params[:project_id])
   end
 
   def index
-    @membership = @project.memberships.new
-    @memberships = @project.memberships.all
+      @membership = @project.memberships.new
+      @memberships = @project.memberships.all
   end
 
   def create

@@ -1,7 +1,14 @@
 class UsersController < ApplicationController
 
+  before_action do
+    if current_user
+    else
+      redirect_to signin_path, notice: 'You must be logged in to access that action'
+    end
+  end
+
   def index
-    @users = User.all
+      @users = User.all
   end
 
   def new

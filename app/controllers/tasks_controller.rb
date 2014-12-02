@@ -1,17 +1,24 @@
 class TasksController < ApplicationController
 
   before_action do
+    if current_user
+    else
+      redirect_to signin_path, notice: 'You must be logged in to access that action'
+    end
+  end
+
+  before_action do
     @project = Project.find(params[:project_id])
   end
 
   before_action :set_task, only: [:show, :edit, :update, :destroy]
 
   def index
-    if params[:filter]
-       @tasks = @project.tasks
-    else
-       @tasks = @project.tasks.where(complete:"false")
-    end
+      if params[:filter]
+         @tasks = @project.tasks
+      else
+         @tasks = @project.tasks.where(complete:"false")
+      end
   end
 
   def show
