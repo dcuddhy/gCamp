@@ -59,10 +59,6 @@ class TasksController < ApplicationController
       params.require(:task).permit(:description, :complete, :due_date)
     end
 
-    def determine_layout
-      current_user ? "application" : "public"
-    end
-
 
 
 end

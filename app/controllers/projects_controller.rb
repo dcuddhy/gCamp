@@ -4,16 +4,20 @@ class ProjectsController <ApplicationController
 
 
   def index
-    @projects = Project.all.order(:name)
+    if current_user
+      @projects = Project.all.order(:name)
+    else
+      redirect_to signin_path
+    end
   end
 
   def new
     @project = Project.new
   end
 
-def show
-  @project = Project.find(params[:id])
-end
+  def show
+    @project = Project.find(params[:id])
+  end
 
   def create
     project_params = params.require(:project).permit(:name)
@@ -49,10 +53,7 @@ end
   layout :determine_layout
 
 
-private
-  def determine_layout
-    current_user ? "application" : "public"
-  end
+
 
 
 end

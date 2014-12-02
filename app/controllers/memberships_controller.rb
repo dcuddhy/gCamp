@@ -52,8 +52,5 @@ class MembershipsController < ApplicationController
     params.require(:membership).permit(:project_id, :user_id, :role)
   end
 
-  def determine_layout
-    current_user ? "application" : "public"
-  end
 
 end

@@ -36,9 +36,5 @@ end
   layout :determine_layout
 
 
-  private
-  def determine_layout
-    current_user ? "application" : "public"
-  end
 
 end
