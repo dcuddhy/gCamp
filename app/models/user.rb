@@ -13,12 +13,11 @@ class User < ActiveRecord::Base
   has_many :memberships, dependent: :destroy
   has_many :projects, through: :memberships
 
-
-
-  has_many :tasks
   has_many :comments, dependent: :nullify
 
 
 #has_many memberships and has many tasks may not be necessary
+###Handled.
+###Thanks, Jeff.
 
 end
