@@ -10,12 +10,13 @@ class ProjectsController <ApplicationController
       @project = Project.new
   end
 
+
   def show
-    if
+    # if current_user.memberships.find_by(project_id: @project, user_id: current_user, role: "owner")
       @project = Project.find(params[:id])
-    else
-      redirect_to signin_path, notice: 'You are not a member of this project.'
-    end
+    # else
+    #   redirect_to signin_path, notice: 'You are not a member of this project.'
+    # end
 
   end
 
@@ -44,10 +45,18 @@ class ProjectsController <ApplicationController
       end
   end
 
+
+## This else statement (below) is meant to make it so that not just anyone
+## can delete a project but it may not be necessary.
+
   def destroy
-      @project = Project.find(params[:id])
-      @project.destroy
-      redirect_to projects_path, notice: 'Project was successfully deleted.'
+    @project = Project.find(params[:id])
+      if current_user.memberships.find_by(project_id: @project, user_id: current_user, role: "owner")
+        @project.destroy
+        redirect_to projects_path, notice: 'Project was successfully deleted.'
+      else
+        redirect_to project_path, notice: 'You must be an owner to delete project'
+      end
   end
 
   layout :determine_layout

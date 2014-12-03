@@ -19,6 +19,8 @@
 <%= link_to pluralize(@project.memberships.count, "member"), project_memberships_path(@project) %>
 
 <br><br>
+
+<% if current_user.memberships.find_by(project_id: @project, user_id: current_user, role: "owner") %>
 <div class="well">
 <strong>Delete Project</strong>
 <br><br>
@@ -28,5 +30,7 @@
   and associated comments.
 <br><br>
 
-<%= link_to "Destroy", project_path(@project), class:"btn btn-danger", method: :delete, data: { confirm: 'Are you sure?' } %>
+<%= link_to "Destroy", project_path(@project), class:"btn btn-danger",
+    method: :delete, data: { confirm: 'Are you sure?' } %>
 </div>
+<% end %>
