@@ -1,11 +1,7 @@
 class MembershipsController < ApplicationController
 
-  before_action do
-    if current_user
-    else
-      redirect_to signin_path, notice: 'You must be logged in to access that action'
-    end
-  end
+  before_action :are_you_logged_in
+  
 
   before_action do
     @project = Project.find(params[:project_id])
@@ -54,6 +50,10 @@ class MembershipsController < ApplicationController
 
 
   private
+
+  def member_check
+
+  end
 
   def membership_params
     params.require(:membership).permit(:project_id, :user_id, :role)

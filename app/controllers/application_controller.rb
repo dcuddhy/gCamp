@@ -17,4 +17,22 @@ class ApplicationController < ActionController::Base
 
   helper_method :determine_layout
 
+  class AccessDenied < StandardError
+  end
+
+  rescue_from AccessDenied, with: :render_404
+
+  def render_404
+    render "public/404", status: 404, layout: false
+  end
+
+  helper_method :are_you_logged_in
+
+  def are_you_logged_in
+    if current_user
+    else
+      redirect_to signin_path, notice: 'You must be logged in to access that action'
+    end
+  end
+
 end

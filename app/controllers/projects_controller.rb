@@ -1,12 +1,6 @@
 class ProjectsController <ApplicationController
 
-  before_action do
-    if current_user
-    else
-      redirect_to signin_path, notice: 'You must be logged in to access that action'
-    end
-  end
-
+  before_action :are_you_logged_in
 
   def index
       @projects = Project.all.order(:name)
@@ -17,7 +11,7 @@ class ProjectsController <ApplicationController
   end
 
   def show
-    if current_user == @project_id
+    if
       @project = Project.find(params[:id])
     else
       redirect_to signin_path, notice: 'You are not a member of this project.'
