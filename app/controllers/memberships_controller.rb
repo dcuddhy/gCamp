@@ -1,7 +1,7 @@
 class MembershipsController < ApplicationController
 
   before_action :are_you_logged_in
-  
+  # before_action :member_check
 
   before_action do
     @project = Project.find(params[:project_id])
@@ -51,13 +51,14 @@ class MembershipsController < ApplicationController
 
   private
 
-  def member_check
-
-  end
-
   def membership_params
     params.require(:membership).permit(:project_id, :user_id, :role)
   end
 
+  # def member_check
+  #   unless current_user.memberships.where(project_id: @project.id).exists?
+  #     raise AccessDenied
+  #   end
+  # end
 
 end
