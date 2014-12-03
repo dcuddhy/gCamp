@@ -41,9 +41,7 @@
 
       <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
         <div class="container">
-          <div class="navbar-brand">
-            <%= link_to "gCamp", projects_path %>
-          </div>
+            <%= link_to "gCamp", projects_path, class:"navbar-brand" %>
 
 
           <ul class="nav navbar-nav">
@@ -68,17 +66,16 @@
 
 
 
-          <div class="navbar-brand pull-right">
+          <ul class="nav navbar-nav navbar-right">
             <% if current_user %>
-            <%= link_to "#{current_user.first_name} #{current_user.last_name}",
-            user_path(session[:user_id]) %> &nbsp; &nbsp;
-            <%= link_to "Sign Out", signout_path %>
+            <li><%= link_to "#{current_user.first_name} #{current_user.last_name}",
+            user_path(session[:user_id]) %></li>
+            <li><%= link_to "Sign Out", signout_path %></li>
             <% else %>
-            <%= link_to "Sign Up", signup_path %>
-            <span style="color:white">|</span>
-            <%= link_to "Sign In", signin_path %>
+            <li><%= link_to "Sign Up", signup_path %></li>
+            <li><%= link_to "Sign In", signin_path %></li>
             <% end %>
-          </div>
+          </ul>
         </div>
       </div>
     </div>

@@ -7,6 +7,7 @@ class ProjectsController <ApplicationController
     end
   end
 
+
   def index
       @projects = Project.all.order(:name)
   end
@@ -16,7 +17,12 @@ class ProjectsController <ApplicationController
   end
 
   def show
+    if current_user == @project_id
       @project = Project.find(params[:id])
+    else
+      redirect_to signin_path, notice: 'You are not a member of this project.'
+    end
+
   end
 
   def create
