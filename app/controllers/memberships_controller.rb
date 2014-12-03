@@ -1,7 +1,6 @@
 class MembershipsController < ApplicationController
 
   before_action :are_you_logged_in
-  # before_action :member_check
 
   before_action do
     @project = Project.find(params[:project_id])
@@ -13,7 +12,8 @@ class MembershipsController < ApplicationController
   end
 
   def create
-    @membership = @project.memberships.new(params.require(:membership).permit(:project_id, :user_id, :role))
+    @membership = @project.memberships.new
+    (params.require(:membership).permit(:project_id, :user_id, :role))
     if @membership.save
       redirect_to project_memberships_path(@project, @membership),
       notice: " #{@membership.user.first_name} was added successfully!"
@@ -31,7 +31,8 @@ class MembershipsController < ApplicationController
 
   def update
     @membership = @project.memberships.find(params[:id])
-    if @membership.update(params.require(:membership).permit(:project_id, :user_id, :role))
+    if @membership.update
+      (params.require(:membership).permit(:project_id, :user_id, :role))
       redirect_to project_memberships_path(@project, @membership),
       notice: " #{@membership.user.first_name} was updated successfully!"
     else
@@ -54,11 +55,5 @@ class MembershipsController < ApplicationController
   def membership_params
     params.require(:membership).permit(:project_id, :user_id, :role)
   end
-
-  # def member_check
-  #   unless current_user.memberships.where(project_id: @project.id).exists?
-  #     raise AccessDenied
-  #   end
-  # end
 
 end
