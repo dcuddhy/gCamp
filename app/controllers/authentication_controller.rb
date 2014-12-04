@@ -1,4 +1,4 @@
-class AuthenticationController < ApplicationController
+class AuthenticationController < PublicController
 
   def create
     user = User.find_by_email(params[:email])
