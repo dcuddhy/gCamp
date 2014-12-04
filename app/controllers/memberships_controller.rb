@@ -12,8 +12,11 @@ class MembershipsController < ApplicationController
   end
 
   def create
-    @membership = @project.memberships.new
-    (params.require(:membership).permit(:project_id, :user_id, :role))
+    @membership = @project.memberships.new(
+      params.require(:membership).permit(
+      :project_id,
+      :user_id,
+      :role))
     if @membership.save
       redirect_to project_memberships_path(@project, @membership),
       notice: " #{@membership.user.first_name} was added successfully!"
