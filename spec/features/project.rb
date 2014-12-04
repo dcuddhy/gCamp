@@ -1,3 +1,9 @@
+
+
+#######################################################
+##FIX AND ADD _SPEC TO FILE NAME SO THAT TRAVIS FINDS##
+#######################################################
+
 require 'rails_helper'
 
 feature "Projects CRUD" do
