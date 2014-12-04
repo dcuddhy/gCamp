@@ -45,8 +45,15 @@ class ProjectsController <ApplicationController
 
   def destroy
     @project = Project.find(params[:id])
+      if current_user.memberships.find_by(
+        project_id: @project,
+        user_id: current_user,
+        role: "owner")
         @project.destroy
         redirect_to projects_path, notice: 'Project was successfully deleted.'
+      else
+        render "public/404", status: 404, layout: false
+      end
 
   end
 
