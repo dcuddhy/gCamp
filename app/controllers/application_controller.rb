@@ -43,4 +43,17 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def owner_check
+    @project = Project.find(params[:id])
+    unless current_user.memberships.find_by(
+      project_id: @project,
+      user_id: current_user,
+      role: "owner")
+      raise AccessDenied
+    end
+  end
+
+  helper_method :owner_check
+
+
 end

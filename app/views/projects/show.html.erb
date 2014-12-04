@@ -1,6 +1,12 @@
  <div class= "page-header">
   <div class= "pull-right">
-    <%= link_to "Edit", edit_project_path(@project), class:"btn btn-info col-md-offset-1"  %>
+    <% if current_user.memberships.find_by(
+      project_id: @project,
+      user_id: current_user,
+      role: "owner")%>
+
+      <%= link_to "Edit", edit_project_path(@project), class:"btn btn-info col-md-offset-1"  %>
+    <% end %>
   </div>
   <h2><%= @project.name %></h2>
 </div>
@@ -20,17 +26,21 @@
 
 <br><br>
 
-<% if current_user.memberships.find_by(project_id: @project, user_id: current_user, role: "owner") %>
-<div class="well">
-<strong>Delete Project</strong>
-<br><br>
-  Deleting this project will also delete
-    <%= pluralize(@project.memberships.count, "membership") %>
-    <%= pluralize(@project.tasks.count, "task") %>
-  and associated comments.
-<br><br>
+<% if current_user.memberships.find_by(
+  project_id: @project,
+  user_id: current_user,
+  role: "owner")%>
 
-<%= link_to "Destroy", project_path(@project), class:"btn btn-danger",
-    method: :delete, data: { confirm: 'Are you sure?' } %>
-</div>
+  <div class="well">
+  <strong>Delete Project</strong>
+  <br><br>
+    Deleting this project will also delete
+      <%= pluralize(@project.memberships.count, "membership") %>
+      <%= pluralize(@project.tasks.count, "task") %>
+    and associated comments.
+  <br><br>
+
+  <%= link_to "Destroy", project_path(@project), class:"btn btn-danger",
+      method: :delete, data: { confirm: 'Are you sure?' } %>
+  </div>
 <% end %>

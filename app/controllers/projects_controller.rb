@@ -2,6 +2,7 @@ class ProjectsController <ApplicationController
 
   before_action :are_you_logged_in
   before_action :project_id_match, except: [:index, :new, :create]
+  before_action :owner_check, except: [:index, :show, :new, :create]
 
 
   def index
@@ -31,30 +32,25 @@ class ProjectsController <ApplicationController
 
   def edit
       @project = Project.find(params[:id])
+
   end
 
   def update
       @project = Project.find(params[:id])
-      if @project.update(params.require(:project).permit(:name))
-        redirect_to project_tasks_path(@project), notice: 'Project was successfully edited.'
-      else
-        render :edit
-      end
+
+        if @project.update(params.require(:project).permit(:name))
+          redirect_to project_tasks_path(@project), notice: 'Project was successfully edited.'
+        else
+          render :edit
+        end
+
   end
 
 
   def destroy
     @project = Project.find(params[:id])
-      if current_user.memberships.find_by(
-        project_id: @project,
-        user_id: current_user,
-        role: "owner")
         @project.destroy
         redirect_to projects_path, notice: 'Project was successfully deleted.'
-      else
-        render "public/404", status: 404, layout: false
-      end
-
   end
 
   layout :determine_layout
