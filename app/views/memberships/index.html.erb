@@ -49,25 +49,44 @@
       <% @project.users.each do |u| %>
         <% u.memberships.where(project_id: @project.id).each do |m| %>
           <%= form_for [@project, m] do |f| %>
+
+              <%= form_for [@project, @membership] do |f| %>
             <td class="col-sm-3"><br>
               <%= link_to "#{u.first_name} #{u.last_name}",
               user_path(u) %>
             </td>
-            <td class="col-sm-2"><br>
-              <%= f.select :role, ["member", "owner"],{},
-              {class: "form-control"} %>
-            </td>
-            <td class="col-sm-2"><br>
-              <%= f.submit "Update", class:"btn btn-primary"%>
-            </td>
-            <td><br>
-              <%= link_to "", project_membership_path(@project, m),
-                method: :delete,
-                data: { confirm: 'Are you sure?' },
-                class:"glyphicon glyphicon-remove"  %>
-            </td>
+
+            <% if current_user.memberships.find_by(
+                  project_id: @project,
+                  user_id: current_user,
+                  role: "owner")%>
+              <td class="col-sm-2"><br>
+                <%= f.select :role, ["member", "owner"],{},
+                {class: "form-control"} %>
+              </td>
+              <td class="col-sm-2"><br>
+                <%= f.submit "Update", class:"btn btn-primary"%>
+              </td>
+                <td><br>
+                  <%= link_to "", project_membership_path(@project, m),
+                  method: :delete,
+                  data: { confirm: 'Are you sure?' },
+                  class:"glyphicon glyphicon-remove"  %>
+                </td>
+            <% end %>
+            <td>
+
+            <% if current_user.memberships.find_by(
+              project_id: @project,
+              user_id: current_user,
+              role: "member")%>
+              <br><%= m.role %>
+            <% end %>
+          </td>
+
           <% end %>
         <% end %>
     </tr>
+      <% end %>
       <% end %>
 </table>
