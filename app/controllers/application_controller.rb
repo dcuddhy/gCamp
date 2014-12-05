@@ -44,7 +44,6 @@ class ApplicationController < ActionController::Base
   end
 
   def owner_check
-    @project = Project.find(params[:id])
     unless current_user.memberships.find_by(
       project_id: @project,
       user_id: current_user,

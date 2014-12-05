@@ -15,29 +15,33 @@
   </div>
 </div>
 
+<% if current_user.memberships.find_by(
+  project_id: @project,
+  user_id: current_user,
+  role: "owner")%>
+  <div class="well form-inline">
+    <%= form_for [@project, @membership] do |f| %>
 
-<div class="well form-inline">
-<%= form_for [@project, @membership] do |f| %>
+      <div class="form-group">
+        <%= f.collection_select(
+              :user_id,
+              User.all,
+              :id,
+              :full_name,
+              {include_blank: "Please select a user"},
+              {class: "form-control"}
+            ) %>
+      </div>
 
-  <div class="form-group">
-    <%= f.collection_select(
-          :user_id,
-          User.all,
-          :id,
-          :full_name,
-          {include_blank: "Please select a user"},
-          {class: "form-control"}
-        ) %>
+      <div class="form-group">
+        <%= f.select :role, ["member", "owner"],{}, {class: "form-control"} %>
+      </div>
+
+      <%= f.submit "Add New Member", class:"btn btn-primary" %>
+
+    <% end %>
   </div>
-
-  <div class="form-group">
-    <%= f.select :role, ["member", "owner"],{}, {class: "form-control"} %>
-  </div>
-
-  <%= f.submit "Add New Member", class:"btn btn-primary" %>
-
 <% end %>
-</div>
 
 
 <table>
@@ -45,7 +49,7 @@
       <% @project.users.each do |u| %>
         <% u.memberships.where(project_id: @project.id).each do |m| %>
           <%= form_for [@project, m] do |f| %>
-            <td class="col-sm-2"><br>
+            <td class="col-sm-3"><br>
               <%= link_to "#{u.first_name} #{u.last_name}",
               user_path(u) %>
             </td>

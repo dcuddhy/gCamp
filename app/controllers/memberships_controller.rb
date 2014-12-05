@@ -1,6 +1,8 @@
 class MembershipsController < ApplicationController
 
   before_action :are_you_logged_in
+  before_action :owner_check, except: [:index]
+
 
   before_action do
     @project = Project.find(params[:project_id])
