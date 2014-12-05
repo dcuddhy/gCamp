@@ -1,6 +1,6 @@
 class MembershipsController < ApplicationController
 
-  before_action :are_you_logged_in  
+  before_action :are_you_logged_in
 
   before_action do
     @project = Project.find(params[:project_id])
@@ -19,7 +19,7 @@ class MembershipsController < ApplicationController
       :role))
     if @membership.save
       redirect_to project_memberships_path(@project, @membership),
-      notice: " #{@membership.user.first_name} was added successfully!"
+      notice: " #{@membership.user.full_name} was added successfully!"
     else
       render :index
     end
@@ -39,7 +39,7 @@ class MembershipsController < ApplicationController
       :user_id,
       :role))
       redirect_to project_memberships_path(@project, @membership),
-      notice: " #{@membership.user.first_name} was updated successfully!"
+      notice: " #{@membership.user.full_name} was updated successfully!"
     else
       render :index
     end
@@ -49,7 +49,7 @@ class MembershipsController < ApplicationController
     @membership = @project.memberships.find(params[:id])
     @membership.destroy
     redirect_to project_memberships_path(@project, @membership),
-    notice: " #{@membership.user.first_name} was removed successfully!"
+    notice: " #{@membership.user.full_name} was removed successfully!"
   end
 
   layout :determine_layout

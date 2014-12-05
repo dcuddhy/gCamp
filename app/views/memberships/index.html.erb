@@ -50,7 +50,7 @@
         <% u.memberships.where(project_id: @project.id).each do |m| %>
           <%= form_for [@project, m] do |f| %>
             <td class="col-sm-3"><br>
-              <%= link_to "#{u.first_name} #{u.last_name}",
+              <%= link_to "#{u.full_name}",
               user_path(u) %>
             </td>
             <% if current_user.memberships.find_by(
