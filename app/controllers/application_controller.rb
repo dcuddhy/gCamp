@@ -54,5 +54,14 @@ class ApplicationController < ActionController::Base
 
   helper_method :owner_check
 
+  def delete_check
+    if @project.memberships.where(role: "owner").count > 1
+    else
+      redirect_to project_memberships_path(@project, @membership),
+      notice: "User cannot be deleted right now."
+    end
+  end
+
+  helper_method :delete_check
 
 end
