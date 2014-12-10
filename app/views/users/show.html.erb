@@ -7,25 +7,37 @@
 
   <tr>
     <td>
-      <strong class="col-xs-2 text-right">First Name: </strong><%= @user.first_name %>
+      <strong class="col-xs-2 text-right">
+        First Name:
+      </strong>
+      <%= @user.first_name %>
     </td>
   </tr>
 
   <tr>
     <td>
-      <strong class="col-xs-2 text-right" >Last Name: </strong><%= @user.last_name %>
+      <strong class="col-xs-2 text-right" >
+        Last Name:
+      </strong>
+      <%= @user.last_name %>
     </td>
   </tr>
 
   <tr>
     <td>
-      <strong class="col-xs-2 text-right">Email: </strong><%= mail_to @user.email %>
+      <strong class="col-xs-2 text-right">
+        Email:
+      </strong>
+      <%= mail_to @user.email %>
     </td>
   </tr>
 
   <tr>
     <td>
-      <strong class="col-xs-2 text-right">Pivotal: </strong><%= mail_to @user.email %>
+      <strong class="col-xs-2 text-right">
+        Pivotal Tracker Token:
+      </strong>
+      <%= @user.pivotal_tracker_token %>
     </td>
   </tr>
 

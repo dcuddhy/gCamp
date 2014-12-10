@@ -52,7 +52,7 @@ ActiveRecord::Schema.define(version: 20141210182254) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "password_digest"
-    t.string   "pitotal_tracker_token"
+    t.string   "pivotal_tracker_token"
   end
 
   create_table "users_iis", force: true do |t|
