@@ -66,12 +66,10 @@
             <%= f.submit "Update", class:"btn btn-primary"%>
           </td>
           <td><br>
-            <% if @project.memberships.where(role: "owner").count > 1 || m.role == "member" %>
               <%= link_to "", project_membership_path(@project, m),
                 method: :delete,
                 data: { confirm: 'Are you sure?' },
                 class:"glyphicon glyphicon-remove"  %>
-            <% end %>
           </td>
           <% end %>
         <% end %>
