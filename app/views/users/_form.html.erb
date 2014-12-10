@@ -12,42 +12,49 @@
 
   <div class="form-group row">
     <div class="col-xs-offset-3 col-sm-6">
-    <%= render "layouts/errors", object: @user %>
+      <%= render "layouts/errors", object: @user %>
     </div>
   </div>
 
   <div class="form-group row">
-    <%= f.label :first_name, class:"col-xs-3 text-right" %>
+      <%= f.label :first_name, class:"col-xs-3 text-right" %>
     <div class="col-xs-4">
-    <%= f.text_field :first_name, class:"form-control" %>
+      <%= f.text_field :first_name, class:"form-control" %>
     </div>
   </div>
 
   <div class="form-group row">
-    <%= f.label :last_name, class:"col-xs-3 text-right" %>
+      <%= f.label :last_name, class:"col-xs-3 text-right" %>
     <div class="col-xs-4">
-    <%= f.text_field :last_name, class:"form-control" %>
+      <%= f.text_field :last_name, class:"form-control" %>
     </div>
   </div>
 
   <div class="form-group row">
-    <%= f.label :email, class:"col-xs-3 text-right" %>
+      <%= f.label :email, class:"col-xs-3 text-right" %>
     <div class="col-xs-4">
-    <%= f.email_field :email, class:"form-control" %>
+      <%= f.email_field :email, class:"form-control" %>
     </div>
   </div>
 
   <div class="form-group row">
-    <%= f.label :password, class:"col-xs-3 text-right" %>
+      <%= f.label :password, class:"col-xs-3 text-right" %>
     <div class="col-xs-4">
-    <%= f.password_field :password, class:"form-control" %>
+      <%= f.password_field :password, class:"form-control" %>
     </div>
   </div>
 
   <div class="form-group row">
-    <%= f.label :password_confirmation, class:"col-xs-3 text-right" %>
+      <%= f.label :password_confirmation, class:"col-xs-3 text-right" %>
     <div class="col-xs-4">
-    <%= f.password_field :password_confirmation, class:"form-control" %>
+      <%= f.password_field :password_confirmation, class:"form-control" %>
+    </div>
+  </div>
+
+  <div class="form-group row">
+      <%= f.label :pivotal_tracker_token, class:"col-xs-3 text-right" %>
+    <div class="col-xs-4">
+      <%= f.password_field :pivotal_tracker_token, class:"form-control" %>
     </div>
   </div>
 
@@ -55,7 +62,7 @@
 
   <div class="form-group row">
     <div class="col-xs-offset-3 col-sm-9">
-    <%= f.submit class:"btn btn-primary"  %>
+      <%= f.submit class:"btn btn-primary"  %>
     </div>
   </div>
 
