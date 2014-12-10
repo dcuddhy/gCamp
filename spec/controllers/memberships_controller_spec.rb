@@ -52,7 +52,4 @@ describe MembershipsController do
 
 
 
-
-
-
 end
