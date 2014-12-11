@@ -27,3 +27,33 @@
     </tr>
       <% end %>
 </table>
+
+
+<br><br>
+
+
+<% if current_user.pivotal_tracker_token %>
+
+  <div class="page-header">
+    <h2>Pivotal Tracker Projects</h2>
+  </div>
+
+  <table class="table">
+
+    <thead>
+      <th>Name</th>
+    </thead>
+
+    <% @tracker_projects.each do |tracker_projects| %>
+      <tr>
+        <td>
+          <%= link_to tracker_projects[:name],
+          "https://www.pivotaltracker.com/n/projects/#{tracker_projects[:id]}",
+          target: "_blank" %>
+        </td>
+      </tr>
+    <% end %>
+
+  </table>
+
+<% end %>

@@ -11,6 +11,7 @@ end
 
 
 gem "pg"
+gem "faraday"
 
 group :production do
   gem "rails_12factor"
