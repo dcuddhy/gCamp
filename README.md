@@ -2,6 +2,7 @@
 
 [![Build Status](https://travis-ci.org/dcuddhy/gCamp.svg?branch=master)](https://travis-ci.org/dcuddhy/gCamp)
 
+[![Code Climate](https://codeclimate.com/github/dcuddhy/gCamp/badges/gpa.svg)](https://codeclimate.com/github/dcuddhy/gCamp)
 
 * * * * * * * * * * * *
 https://floating-gorge-3757.herokuapp.com/

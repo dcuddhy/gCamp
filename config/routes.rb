@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
 
 
+  resources :tracker_projects
   resources :users
   resources :projects do
     resources :memberships

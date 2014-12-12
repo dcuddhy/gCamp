@@ -1,0 +1,20 @@
+Tracker project show page
+
+
+<table class="table">
+
+  <thead>
+    <th>Name</th>
+  </thead>
+
+  <% @tracker_projects.each do |tracker_projects| %>
+  <tr>
+    <td>
+      <%= link_to tracker_projects[:name],
+      "https://www.pivotaltracker.com/n/projects/#{tracker_projects[:id]}",
+      target: "_blank" %>
+    </td>
+  </tr>
+  <% end %>
+
+</table>
