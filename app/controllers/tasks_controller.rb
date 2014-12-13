@@ -9,11 +9,17 @@ class TasksController < ApplicationController
   before_action :set_task, only: [:show, :edit, :update, :destroy]
 
   def index
+    if current_user.memberships.find_by(
+      project_id: @project,
+      user_id: current_user)
       if params[:filter]
          @tasks = @project.tasks
       else
          @tasks = @project.tasks.where(complete:"false")
       end
+    else
+      render "public/404", status: 404, layout: false
+    end
   end
 
   def show
