@@ -44,6 +44,8 @@ class ApplicationController < ActionController::Base
     end
   end
 
+helper_method :project_id_match
+
   def owner_check
     unless current_user.memberships.find_by(
       project_id: @project,

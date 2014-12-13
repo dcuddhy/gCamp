@@ -7,8 +7,14 @@ class MembershipsController < ApplicationController
   end
 
   def index
+    if current_user.memberships.find_by(
+      project_id: @project,
+      user_id: current_user)
       @membership = @project.memberships.new
       @memberships = @project.memberships.all
+    else
+      render "public/404", status: 404, layout: false
+    end
   end
 
   def create
@@ -26,7 +32,7 @@ class MembershipsController < ApplicationController
   end
 
   def show
-    @membership = @project.memberships.find(params[:id])
+      @membership = @project.memberships.find(params[:id])
   end
 
   def edit
