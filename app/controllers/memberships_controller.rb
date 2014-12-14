@@ -72,13 +72,4 @@ class MembershipsController < ApplicationController
     params.require(:membership).permit(:project_id, :user_id, :role)
   end
 
-
-
-
-
-
-
-
-
-
 end

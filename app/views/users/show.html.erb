@@ -1,5 +1,7 @@
 <div class="page-header">
+  <% if @user.id == current_user.id  %>
   <%= link_to 'Edit', edit_user_path, class: "btn btn-info pull-right" %>
+  <% end %>
   <h2><%= @user.full_name %></h2>
 </div>
 
@@ -24,12 +26,14 @@
   </tr>
 
   <tr>
-    <td>
-      <strong class="col-xs-2 text-right">
-        Email:
-      </strong>
-      <%= mail_to @user.email %>
-    </td>
+    <% if @user.id == current_user.id  %>
+      <td>
+        <strong class="col-xs-2 text-right">
+          Email:
+        </strong>
+        <%= mail_to @user.email %>
+      </td>
+    <% end %>
   </tr>
 
 <% if @user.pivotal_tracker_token %>
