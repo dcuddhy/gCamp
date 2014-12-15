@@ -52,7 +52,7 @@ class MembershipsController < ApplicationController
   end
 
   def destroy
-    if @project.memberships.where(role: "owner").count > 1
+    if @user_id == current_user.id || @project.memberships.where(role: "owner").count > 1
       @membership = @project.memberships.find(params[:id])
       @membership.destroy
       redirect_to project_memberships_path(@project, @membership),
@@ -71,5 +71,20 @@ class MembershipsController < ApplicationController
   def membership_params
     params.require(:membership).permit(:project_id, :user_id, :role)
   end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 end
