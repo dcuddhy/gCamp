@@ -19,7 +19,7 @@ first_name: 'Admin',
 last_name: 'User',
 email: 'admin@example.com',
 password: 'password',
-# admin: true
+admin: true
 )
 
 owner = User.create!(

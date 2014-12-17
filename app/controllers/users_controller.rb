@@ -2,6 +2,7 @@ class UsersController < ApplicationController
 
   before_action :are_you_logged_in
   before_action :require_self, only: [:edit, :update, :destroy]
+  before_action :authorize_admin, only: [:new, :create]
 
 
 
@@ -31,7 +32,8 @@ class UsersController < ApplicationController
       :email,
       :password,
       :password_confirmation,
-      :pivotal_tracker_token)
+      :pivotal_tracker_token,
+      :admin)
       )
     if @user.save
       redirect_to users_path, notice: 'User was successfully created.'
@@ -69,18 +71,28 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
   end
 
-  # Never trust parameters from the scary internet, only allow the white list through.
   def user_params
-    params.require(:user).permit(
-    :first_name,
-    :last_name,
-    :email,
-    :password,
-    :password_confirmation,
-    :pivotal_tracker_token
-    )
+    if current_user.admin
+      params.require(:user).permit(
+      :first_name,
+      :last_name,
+      :email,
+      :password,
+      :password_confirmation,
+      :pivotal_tracker_token,
+      :admin
+      )
+    else
+      params.require(:user).permit(
+      :first_name,
+      :last_name,
+      :email,
+      :password,
+      :password_confirmation,
+      :pivotal_tracker_token,
+      )
+    end
   end
-
 
   def require_self
     unless user.id == current_user.id
@@ -88,6 +100,10 @@ class UsersController < ApplicationController
     end
   end
 
-
+  def authorize_admin
+    unless current_user.admin
+      raise AccessDenied
+    end
+  end
 
 end
