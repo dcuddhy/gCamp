@@ -57,7 +57,7 @@
           <% if current_user.memberships.find_by(
             project_id: @project,
             user_id: current_user,
-            role: "owner")%>
+            role: "owner") || current_user.admin %>
 
               <td class="col-sm-2"><br>
                 <%= f.select :role, ["member", "owner"],{},
@@ -85,12 +85,12 @@
             <% if current_user.memberships.find_by(
               project_id: @project,
               user_id: current_user,
-              role: "member") %>
+              role: "member") && !current_user.admin %>
               <br><%= membership.role %>
             </span>
 
             <span class="padding-base-vertical">
-              <% if current_user.id == membership.user_id  %>
+              <% if current_user.id == membership.user_id %>
                 <%= link_to "", project_membership_path(@project, membership),
                 method: :delete,
                 data: { confirm: 'Are you sure?' },
