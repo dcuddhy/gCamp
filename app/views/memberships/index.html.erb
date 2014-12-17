@@ -1,6 +1,5 @@
-<div class= "page-header">
-  <h2>Memberships for <%= @project.name %></h2>
-</div>
+<%= page_header "Memberships for #{@project.name}" do %>
+<% end %>
 
 <ol class="breadcrumb">
   <li><%= link_to "Projects", projects_path %></li>
@@ -77,8 +76,6 @@
 
           <% end %>
         <% end %>
-
-
 
           <td>
             <span>

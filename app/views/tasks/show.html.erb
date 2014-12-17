@@ -1,9 +1,6 @@
-<div class= "page-header">
-    <div class= "pull-right">
-      <%= link_to 'Edit', edit_project_task_path(@project, @task), class: "btn btn-info" %>
-    </div>
-  <h2><%= @task.description %></h2>
-</div>
+<%= page_header "#{@task.description}" do %>
+  <%= link_to 'Edit', edit_project_task_path(@project, @task), class: "btn btn-info" %>
+<% end %>
 
 
 <ol class="breadcrumb">

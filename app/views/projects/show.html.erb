@@ -1,15 +1,11 @@
- <div class= "page-header">
-  <div class= "pull-right">
-    <% if current_user.memberships.find_by(
-      project_id: @project,
-      user_id: current_user,
-      role: "owner")%>
-
+<%= page_header "#{@project.name}" do %>
+  <% if current_user.memberships.find_by(
+    project_id: @project,
+    user_id: current_user,
+    role: "owner")%>
       <%= link_to "Edit", edit_project_path(@project), class:"btn btn-info col-md-offset-1"  %>
-    <% end %>
-  </div>
-  <h2><%= @project.name %></h2>
-</div>
+  <% end %>
+<% end %>
 
 
 <ol class="breadcrumb">

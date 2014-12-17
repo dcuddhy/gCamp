@@ -1,13 +1,8 @@
-
-<div class= "page-header">
-<div class= "pull-right">
-  <%= link_to_if !params[:filter], "All", project_tasks_path(filter:"all") %> |
-  <%= link_to_if params[:filter], "Incomplete", project_tasks_path %>
-  <%= link_to 'New Task', new_project_task_path, class: "btn btn-primary" %>
-</div>
-
-  <h2>Tasks for <%= @project.name %></h2>
-</div>
+<%= page_header "Tasks for #{@project.name}" do %>
+<%= link_to_if !params[:filter], "All", project_tasks_path(filter:"all") %> |
+<%= link_to_if params[:filter], "Incomplete", project_tasks_path %>
+<%= link_to 'New Task', new_project_task_path, class: "btn btn-primary" %>
+<% end %>
 
 <ol class="breadcrumb">
   <li><%= link_to "Projects", projects_path %></li>
