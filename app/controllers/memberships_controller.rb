@@ -51,8 +51,12 @@ class MembershipsController < ApplicationController
     end
   end
 
+
+
+### try to pull if statement for self from membership index view to allow self delete
+
   def destroy
-    if @user_id == current_user.id || @project.memberships.where(role: "owner").count > 1
+    if @project.memberships.where(role: "owner").count > 1
       @membership = @project.memberships.find(params[:id])
       @membership.destroy
       redirect_to project_memberships_path(@project, @membership),
