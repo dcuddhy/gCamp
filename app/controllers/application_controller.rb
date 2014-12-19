@@ -39,7 +39,7 @@ class ApplicationController < ActionController::Base
   def project_id_match
     project_list = Membership.where(user_id: current_user.id).pluck(:project_id)
     @project = Project.find(params[:id])
-    unless project_list.include?(@project.id)
+    unless project_list.include?(@project.id) || current_user.admin
       raise AccessDenied
     end
   end

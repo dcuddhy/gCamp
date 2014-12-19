@@ -17,7 +17,7 @@
 <% if current_user.memberships.find_by(
   project_id: @project,
   user_id: current_user,
-  role: "owner")%>
+  role: "owner") || current_user.admin %>
   <div class="well form-inline">
     <%= form_for [@project, @membership] do |f| %>
 

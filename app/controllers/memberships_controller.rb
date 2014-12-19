@@ -9,7 +9,7 @@ class MembershipsController < ApplicationController
   def index
     if current_user.memberships.find_by(
       project_id: @project,
-      user_id: current_user)
+      user_id: current_user) || current_user.admin
       @membership = @project.memberships.new
       @memberships = @project.memberships.all
     else

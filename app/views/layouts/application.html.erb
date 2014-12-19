@@ -51,7 +51,14 @@
                 <span class="caret"></span>
               </a>
               <ul class="dropdown-menu" role="menu">
-                <% current_user.projects.each do |project| %>
+
+                <% if current_user.admin %>
+                  <% @projects = Project.all %>
+                <% else %>
+                  <% @projects = current_user.projects %>
+                <% end %>
+
+                <% @projects.each do |project| %>
                   <li><%= link_to project.name, project_path(project) %></li>
               <% end %>
                   <li class="divider"></li>
