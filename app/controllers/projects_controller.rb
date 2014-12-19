@@ -6,7 +6,12 @@ class ProjectsController <ApplicationController
 
 
   def index
-    @projects = Project.all.order(:name)
+    if current_user.admin
+      @projects = Project.all.order(:name)
+    else
+      @projects = current_user.projects
+    end
+
     tracker_api = TrackerAPI.new
     if current_user.pivotal_tracker_token
       @tracker_projects = tracker_api.projects(current_user.pivotal_tracker_token)

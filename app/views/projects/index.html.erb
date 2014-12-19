@@ -9,7 +9,7 @@
 </th><th class="text-center col-sm-1">Tasks</th><th class="col-sm-4"></th>
   </thead>
     <tr>
-        <% current_user.projects.each do |project| %>
+        <% @projects.each do |project| %>
       <td>
         <%= link_to project.name, project_path(project) %>
       </td>
