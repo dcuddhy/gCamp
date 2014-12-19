@@ -95,7 +95,7 @@ class UsersController < ApplicationController
   end
 
   def require_self
-    unless user.id == current_user.id
+    unless user.id == current_user.id || current_user.admin
       render file: 'public/404.html', status: :not_found, layout: false
     end
   end
