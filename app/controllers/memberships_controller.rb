@@ -19,10 +19,10 @@ class MembershipsController < ApplicationController
 
   def create
     @membership = @project.memberships.new(
-      params.require(:membership).permit(
-      :project_id,
-      :user_id,
-      :role))
+    params.require(:membership).permit(
+    :project_id,
+    :user_id,
+    :role))
     if @membership.save
       redirect_to project_memberships_path(@project, @membership),
       notice: " #{@membership.user.full_name} was added successfully!"
@@ -32,7 +32,7 @@ class MembershipsController < ApplicationController
   end
 
   def show
-      @membership = @project.memberships.find(params[:id])
+    @membership = @project.memberships.find(params[:id])
   end
 
   def edit
@@ -53,13 +53,19 @@ class MembershipsController < ApplicationController
 
 
 
-### try to pull if statement for self from membership index view to allow self delete
+  ### try to pull if statement for self from membership index view to allow self delete
 
   def destroy
-    if @project.memberships.where(role: "owner").count > 1
-      @membership = @project.memberships.find(params[:id])
+    @membership = @project.memberships.find(params[:id])
+    if @project.memberships.where(role: "owner").count > 1 || current_user.admin
       @membership.destroy
       redirect_to project_memberships_path(@project, @membership),
+      notice: " #{@membership.user.full_name} was removed successfully!"
+
+      ##MEMBERS CAN DELETE ALL MEMBERSHIPS, NOT JUST THEIR OWN
+    elsif @membership.role == "member" && @membership.user.id == current_user.id
+      @membership.destroy
+      redirect_to projects_path(@project, @membership),
       notice: " #{@membership.user.full_name} was removed successfully!"
     else
       redirect_to project_memberships_path(@project, @membership),
@@ -69,26 +75,10 @@ class MembershipsController < ApplicationController
 
   layout :determine_layout
 
-
   private
 
   def membership_params
     params.require(:membership).permit(:project_id, :user_id, :role)
   end
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 end

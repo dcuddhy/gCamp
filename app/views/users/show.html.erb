@@ -26,7 +26,9 @@
   </tr>
 
   <tr>
-    <% if @user.id == current_user.id || current_user.admin  %>
+
+
+    <% if @user.id == current_user.id || current_user.admin || (current_user.projects & @user.projects).any? %>
       <td>
         <strong class="col-xs-2 text-right">
           Email:

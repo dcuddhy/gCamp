@@ -5,9 +5,11 @@ class ApplicationController < ActionController::Base
 
 
   def current_user
-    User.find_by(id: session[:user_id])
+    if session[:user_id]
+      User.find_by(id: session[:user_id])
+    end
   end
-
+``
 
   helper_method :current_user
 
@@ -50,7 +52,7 @@ helper_method :project_id_match
     unless current_user.memberships.find_by(
       project_id: @project,
       user_id: current_user,
-      role: "owner")
+      role: "owner") || current_user.admin
       raise AccessDenied
     end
   end
@@ -66,5 +68,35 @@ helper_method :project_id_match
   # end
   #
   # helper_method :delete_check
+
+
+  #
+  # Redirects to stored location (or to the default).
+  def redirect_back_or(default)
+    redirect_to(session[:first_url] || default)
+    session.delete(:first_url)
+  end
+
+  # Stores the URL trying to be accessed.
+  def store_location
+    session[:first_url] = request.url if request.get?
+  end
+### jeff
+  def ensure_current_user
+    unless current_user
+      session[:first_url] = request.url if request.get?
+      redirect_to signin_path, notice: "steve's shit. dont do that"
+    end
+  end
+
+  helper_method :ensure_current_user
+
+### jeff
+  def redirect_to_previous_url_or_projects
+    redirect_to (session[:first_url] || projects_path)
+    session.delete(:first_url)
+  end
+
+  helper_method :redirect_to_previous_url_or_projects
 
 end
