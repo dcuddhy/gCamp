@@ -25,9 +25,6 @@ class TrackerAPI
   end
 
 
-
-
-
 end
 
 

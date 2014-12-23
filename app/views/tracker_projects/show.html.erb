@@ -1,28 +1,40 @@
-Tracker project show page
-
-
-<% if current_user.pivotal_tracker_token %>
-
-<div class="page-header">
-  <h2>Pivotal Tracker Projects</h2>
+<div class= "page-header">
+  <% @tracker_projects.each do |tracker_project| %>
+    <% if tracker_project[:id].to_s == params[:id] %>
+      <h2>Stories for <%= tracker_project[:name] %> </h2>
+    <% end %>
+  <% end %>
 </div>
 
-<table class="table">
 
+<table class="table table-striped">
   <thead>
-    <th>Name</th>
+    <th>Story</th>
+    <th class = "col-xs-1">Estimate</th>
+    <th class = "col-xs-1">Labels</th>
+    <th class = "col-xs-2">Current State</th>
   </thead>
-
-  <% @tracker_projects.each do |tracker_projects| %>
-  <tr>
-    <td>
-      <%= link_to tracker_projects[:name],
-      "https://www.pivotaltracker.com/n/projects/#{tracker_projects[:id]}",
-      target: "_blank" %>
-    </td>
-  </tr>
-  <% end %>
-
+  <tbody>
+    <% @tracker_stories.each do |story| %>
+      <tr>
+        <td>
+        <%= link_to story[:name], story[:url],
+          target: "_blank" %>
+        </td>
+        <td>
+        <%= story[:estimate] %>
+        </td>
+        <td class = "col-xs-1">
+          <% label_array = [] %>
+            <% story[:labels].each do |label| %>
+              <% label_array << label[:name] %>
+            <% end %>
+          <%= label_array.join(", ") %>
+        </td>
+        <td class = "col-xs-2">
+        <%= story[:current_state] %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
 </table>
-
-<% end %>
