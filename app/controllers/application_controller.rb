@@ -2,6 +2,7 @@ class ApplicationController < ActionController::Base
   # PrUser CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
       protect_from_forgery with: :exception
+      before_action :ensure_current_user
 
 
   def current_user
@@ -71,32 +72,17 @@ helper_method :project_id_match
 
 
   #
-  # Redirects to stored location (or to the default).
-  def redirect_back_or(default)
-    redirect_to(session[:first_url] || default)
-    session.delete(:first_url)
-  end
 
-  # Stores the URL trying to be accessed.
-  def store_location
-    session[:first_url] = request.url if request.get?
-  end
-### jeff
   def ensure_current_user
     unless current_user
       session[:first_url] = request.url if request.get?
-      redirect_to signin_path, notice: "steve's shit. dont do that"
+      redirect_to signin_path, notice: "You must be logged in to access that action"
     end
   end
 
-  helper_method :ensure_current_user
-
-### jeff
   def redirect_to_previous_url_or_projects
     redirect_to (session[:first_url] || projects_path)
     session.delete(:first_url)
   end
-
-  helper_method :redirect_to_previous_url_or_projects
 
 end

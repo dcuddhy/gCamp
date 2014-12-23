@@ -1,6 +1,8 @@
 class PagesController <ApplicationController
 
   layout :determine_layout
+  skip_before_action :ensure_current_user
+  
 
   def index
 
