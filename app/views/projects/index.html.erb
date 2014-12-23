@@ -39,20 +39,14 @@
   <table class="table">
 
     <thead>
-      <th>Name</th><th>Members</th><th>Tasks</th>
+      <th>Name</th>
     </thead>
 
-    <% @tracker_projects.each do |tracker_projects| %>
+    <% @tracker_projects.each do |tracker_project| %>
       <tr>
         <td>
-          <%= link_to tracker_projects[:name],
-          tracker_project_path(tracker_projects[:id]) %>
-        </td>
-        <td>
-          <%= link_to("#{tracker_projects.count}", )%>
-        </td>
-        <td>
-
+          <%= link_to tracker_project[:name],
+          tracker_project_path(tracker_project[:id]) %>
         </td>
       </tr>
     <% end %>

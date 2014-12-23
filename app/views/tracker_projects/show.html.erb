@@ -10,31 +10,40 @@
 <table class="table table-striped">
   <thead>
     <th>Story</th>
-    <th class = "col-xs-1">Estimate</th>
-    <th class = "col-xs-1">Labels</th>
-    <th class = "col-xs-2">Current State</th>
+    <th class = "col-xs-1">
+      Estimate
+    </th>
+    <th class = "col-xs-1">
+      Labels
+    </th>
+    <th class = "col-xs-2">
+      Current State
+    </th>
   </thead>
   <tbody>
     <% @tracker_stories.each do |story| %>
-      <tr>
-        <td>
-        <%= link_to story[:name], story[:url],
-          target: "_blank" %>
-        </td>
-        <td>
-        <%= story[:estimate] %>
-        </td>
-        <td class = "col-xs-1">
-          <% label_array = [] %>
-            <% story[:labels].each do |label| %>
-              <% label_array << label[:name] %>
-            <% end %>
-          <%= label_array.join(", ") %>
-        </td>
-        <td class = "col-xs-2">
-        <%= story[:current_state] %>
-        </td>
-      </tr>
+      <% if story[:current_state] != "accepted" &&
+         story[:current_state] != "unscheduled" %>
+        <tr>
+          <td>
+          <%= link_to story[:name], story[:url],
+            target: "_blank" %>
+          </td>
+          <td>
+            <%= story[:estimate] %>
+          </td>
+          <td class = "col-xs-1">
+            <% label_array = [] %>
+              <% story[:labels].each do |label| %>
+                <% label_array << label[:name] %>
+              <% end %>
+            <%= label_array.join(", ") %>
+          </td>
+          <td class = "col-xs-2">
+            <%= story[:current_state] %>
+          </td>
+        </tr>
+      <% end %>
     <% end %>
   </tbody>
 </table>
