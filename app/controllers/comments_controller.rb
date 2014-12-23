@@ -1,9 +1,9 @@
 class CommentsController <ApplicationController
 
-before_action do
-  @task = Task.find(params[:task_id])
-  @project = Project.find(params[:project_id])
-end
+  before_action do
+    @task = Task.find(params[:task_id])
+    @project = Project.find(params[:project_id])
+  end
 
 
   def create
@@ -34,7 +34,5 @@ end
   end
 
   layout :determine_layout
-
-
 
 end

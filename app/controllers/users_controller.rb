@@ -5,7 +5,6 @@ class UsersController < ApplicationController
   before_action :authorize_admin, only: [:new, :create]
 
 
-
   def index
       @users = User.all
   end
@@ -20,7 +19,6 @@ class UsersController < ApplicationController
 
   def edit
       @user = User.find(params[:id])
-
   end
 
   def create
@@ -42,18 +40,13 @@ class UsersController < ApplicationController
     end
   end
 
-
   def update
     @user = User.find(params[:id])
-
-
-
-      if @user.update(user_params)
-        redirect_to users_path, notice: 'User was successfully updated.'
-        else
-        render :edit
-      end
-
+    if @user.update(user_params)
+      redirect_to users_path, notice: 'User was successfully updated.'
+      else
+      render :edit
+    end
   end
 
   def destroy
@@ -63,7 +56,6 @@ class UsersController < ApplicationController
   end
 
   layout :determine_layout
-
 
   private
 

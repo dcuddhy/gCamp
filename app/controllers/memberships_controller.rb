@@ -6,6 +6,7 @@ class MembershipsController < ApplicationController
     @project = Project.find(params[:project_id])
   end
 
+
   def index
     if current_user.memberships.find_by(
       project_id: @project,
@@ -51,18 +52,12 @@ class MembershipsController < ApplicationController
     end
   end
 
-
-
-  ### try to pull if statement for self from membership index view to allow self delete
-
   def destroy
     @membership = @project.memberships.find(params[:id])
     if @project.memberships.where(role: "owner").count > 1 || current_user.admin
       @membership.destroy
       redirect_to project_memberships_path(@project, @membership),
       notice: " #{@membership.user.full_name} was removed successfully!"
-
-      ##MEMBERS CAN DELETE ALL MEMBERSHIPS, NOT JUST THEIR OWN
     elsif @membership.role == "member" && @membership.user.id == current_user.id
       @membership.destroy
       redirect_to projects_path(@project, @membership),

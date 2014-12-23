@@ -10,6 +10,4 @@ class TrackerProjectsController < ApplicationController
     @tracker_stories = tracker_api.stories(current_user.pivotal_tracker_token, params[:id])
   end
 
-
-
 end

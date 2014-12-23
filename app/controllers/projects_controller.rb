@@ -6,13 +6,14 @@ class ProjectsController <ApplicationController
 
 
   def index
+    tracker_api = TrackerAPI.new
+
     if current_user.admin
       @projects = Project.all.order(:name)
     else
       @projects = current_user.projects
     end
 
-    tracker_api = TrackerAPI.new
     if current_user.pivotal_tracker_token
       @tracker_projects = tracker_api.projects(current_user.pivotal_tracker_token)
     end
@@ -37,10 +38,8 @@ class ProjectsController <ApplicationController
     end
   end
 
-
   def edit
     @project = Project.find(params[:id])
-
   end
 
   def update
@@ -51,7 +50,6 @@ class ProjectsController <ApplicationController
       render :edit
     end
   end
-
 
   def destroy
     @project = Project.find(params[:id])

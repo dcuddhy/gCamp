@@ -1,12 +1,12 @@
 class TasksController < ApplicationController
 
   before_action :are_you_logged_in
+  before_action :set_task, only: [:show, :edit, :update, :destroy]
 
   before_action do
     @project = Project.find(params[:project_id])
   end
 
-  before_action :set_task, only: [:show, :edit, :update, :destroy]
 
   def index
     if current_user.memberships.find_by(
@@ -57,7 +57,6 @@ class TasksController < ApplicationController
 
   layout :determine_layout
 
-
   private
     def set_task
       @task = @project.tasks.find(params[:id])
@@ -66,7 +65,5 @@ class TasksController < ApplicationController
     def task_params
       params.require(:task).permit(:description, :complete, :due_date)
     end
-
-
 
 end

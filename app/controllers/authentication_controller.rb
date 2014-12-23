@@ -14,7 +14,6 @@ class AuthenticationController < PublicController
     end
   end
 
-
   def destroy
     session.clear
     redirect_to root_path

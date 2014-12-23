@@ -2,7 +2,7 @@ class PagesController <ApplicationController
 
   layout :determine_layout
   skip_before_action :ensure_current_user
-  
+
 
   def index
 
@@ -18,13 +18,9 @@ class PagesController <ApplicationController
     quote3.text = "Better Ingredients, Better Pizza"
     quote3.author = 'Papa John'
 
-
   @quotes = [quote1, quote2, quote3]
 
   end
-
-
-
 
   def faq
 
@@ -57,8 +53,8 @@ class PagesController <ApplicationController
                   It's going to blow your mind.  Organization is only
                   (well, will only) be a click away.  Amazing!"
 
-  @faqs = [faq1, faq2, faq3]
-
+    @faqs = [faq1, faq2, faq3]
+    
   end
 
 end

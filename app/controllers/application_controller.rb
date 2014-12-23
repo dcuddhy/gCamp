@@ -1,24 +1,23 @@
 class ApplicationController < ActionController::Base
-  # PrUser CSRF attacks by raising an exception.
-  # For APIs, you may want to use :null_session instead.
-      protect_from_forgery with: :exception
-      before_action :ensure_current_user
 
+  protect_from_forgery with: :exception
+  before_action :ensure_current_user
 
   def current_user
     if session[:user_id]
       User.find_by(id: session[:user_id])
     end
   end
-``
 
   helper_method :current_user
+
 
   def determine_layout
     current_user ? "application" : "public"
   end
 
   helper_method :determine_layout
+
 
   class AccessDenied < StandardError
   end
@@ -29,7 +28,6 @@ class ApplicationController < ActionController::Base
     render "public/404", status: 404, layout: false
   end
 
-  helper_method :are_you_logged_in
 
   def are_you_logged_in
     if current_user
@@ -39,6 +37,9 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  helper_method :are_you_logged_in
+
+
   def project_id_match
     project_list = Membership.where(user_id: current_user.id).pluck(:project_id)
     @project = Project.find(params[:id])
@@ -47,7 +48,8 @@ class ApplicationController < ActionController::Base
     end
   end
 
-helper_method :project_id_match
+  helper_method :project_id_match
+
 
   def owner_check
     unless current_user.memberships.find_by(
@@ -60,18 +62,6 @@ helper_method :project_id_match
 
   helper_method :owner_check
 
-  # def delete_check
-  #   if @project.memberships.where(role: "owner").count > 1
-  #   else
-  #     redirect_to project_memberships_path(@project, @membership),
-  #     notice: "User cannot be deleted right now."
-  #   end
-  # end
-  #
-  # helper_method :delete_check
-
-
-  #
 
   def ensure_current_user
     unless current_user
