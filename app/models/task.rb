@@ -14,6 +14,4 @@ class Task < ActiveRecord::Base
   has_many :users
   has_many :comments, dependent: :destroy
 
-#has_many :users may be unnecessary
-
 end

@@ -9,5 +9,4 @@ class Membership < ActiveRecord::Base
   validates :user, uniqueness: {scope: :project,
   message: "has already been added"}
 
-
 end
