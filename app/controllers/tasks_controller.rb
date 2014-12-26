@@ -1,11 +1,11 @@
 class TasksController < ApplicationController
 
-  before_action :are_you_logged_in
-  before_action :set_task, only: [:show, :edit, :update, :destroy]
-
   before_action do
     @project = Project.find(params[:project_id])
   end
+
+  before_action :are_you_logged_in
+  before_action :set_task, only: [:show, :edit, :update, :destroy]
 
 
   def index
@@ -52,16 +52,17 @@ class TasksController < ApplicationController
 
   def destroy
     @task.destroy
-      redirect_to project_tasks_path(@project, @suitcase), notice: 'Task was successfully destroyed.'
+      redirect_to project_tasks_path(@project, @task), notice: 'Task was successfully destroyed.'
   end
 
   layout :determine_layout
 
   private
+  
     def set_task
       @task = @project.tasks.find(params[:id])
     end
-        
+
     def task_params
       params.require(:task).permit(:description, :complete, :due_date)
     end
