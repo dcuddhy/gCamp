@@ -1,6 +1,6 @@
 <div class="page-header">
   <% if @user.id == current_user.id || current_user.admin %>
-  <%= link_to 'Edit', edit_user_path, class: "btn btn-info pull-right" %>
+    <%= link_to 'Edit', edit_user_path, class: "btn btn-info pull-right" %>
   <% end %>
   <h2><%= @user.full_name %></h2>
 </div>
@@ -38,19 +38,19 @@
     <% end %>
   </tr>
 
-<% if @user.pivotal_tracker_token %>
+  <% if @user.pivotal_tracker_token %>
 
-  <tr>
-    <td>
-      <strong class="col-xs-2 text-right">
-        Pivotal Tracker Token:
-      </strong>
-      <%=
-        @user.pivotal_tracker_token[0 .. 3]
-      %><%=
-       '*' * (@user.pivotal_tracker_token.length - 4)
-      %>
-    </td>
-  </tr>
-<% end %>
+    <tr>
+      <td>
+        <strong class="col-xs-2 text-right">
+          Pivotal Tracker Token:
+        </strong>
+        <%=
+          @user.pivotal_tracker_token[0 .. 3]
+        %><%=
+         '*' * (@user.pivotal_tracker_token.length - 4)
+        %>
+      </td>
+    </tr>
+  <% end %>
 </table>

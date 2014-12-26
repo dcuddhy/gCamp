@@ -44,7 +44,7 @@ class TasksController < ApplicationController
 
   def update
       if @task.update(task_params)
-        redirect_to project_tasks_path(@project, @task), notice: 'Task was successfully created.'
+        redirect_to project_tasks_path(@project, @task), notice: 'Task was successfully updated.'
       else
         render :edit
     end
@@ -58,7 +58,7 @@ class TasksController < ApplicationController
   layout :determine_layout
 
   private
-  
+
     def set_task
       @task = @project.tasks.find(params[:id])
     end
