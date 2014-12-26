@@ -61,7 +61,7 @@ class TasksController < ApplicationController
     def set_task
       @task = @project.tasks.find(params[:id])
     end
-
+        
     def task_params
       params.require(:task).permit(:description, :complete, :due_date)
     end

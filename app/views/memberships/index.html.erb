@@ -23,13 +23,13 @@
 
       <div class="form-group">
         <%= f.collection_select(
-              :user_id,
-              User.all,
-              :id,
-              :full_name,
-              {include_blank: "Please select a user"},
-              {class: "form-control"}
-            ) %>
+            :user_id,
+            User.all,
+            :id,
+            :full_name,
+            {include_blank: "Please select a user"},
+            {class: "form-control"})
+          %>
       </div>
 
       <div class="form-group">

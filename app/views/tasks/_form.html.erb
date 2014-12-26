@@ -25,18 +25,18 @@
     </div>
   </div>
 
-<% if @task.id? %>
-  <div class="form-group">
-    <div class="col-xs-offset-2 col-xs-4">
-      <div class="checkbox">
-        <label>
-          <%= f.check_box :complete %>
-          Complete
-        </label>
+  <% if @task.id? %>
+    <div class="form-group">
+      <div class="col-xs-offset-2 col-xs-4">
+        <div class="checkbox">
+          <label>
+            <%= f.check_box :complete %>
+            Complete
+          </label>
+        </div>
       </div>
     </div>
-  </div>
-<% end %>
+  <% end %>
 
   <div class="form-group">
     <div class="col-xs-offset-2 col-xs-4">

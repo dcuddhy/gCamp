@@ -1,18 +1,18 @@
-  <% if object.errors.present? %>
-    <div class="alert alert-danger">
+<% if object.errors.present? %>
+  <div class="alert alert-danger">
 
-      <strong>
-        <%= pluralize(object.errors.count, "error") %>
-        prohibited this post from being saved:
-      </strong>
+    <strong>
+      <%= pluralize(object.errors.count, "error") %>
+      prohibited this post from being saved:
+    </strong>
 
-        <ul>
-          <% object.errors.full_messages.each do |message| %>
-            <li>
-              <%= message %>
-            </li>
-          <% end %>
-        </ul>
+      <ul>
+        <% object.errors.full_messages.each do |message| %>
+          <li>
+            <%= message %>
+          </li>
+        <% end %>
+      </ul>
 
-    </div>
-  <% end %>
+  </div>
+<% end %>
