@@ -19,7 +19,7 @@ require "rails_helper.rb"
       project = Project.new(name:"burritos")
       project.valid?
       expect(project.errors[:name].present?).to eq(true)
-    end 
+    end
 
     it "validates uniqueness of project" do
       project = Project.create(name:"burritos")

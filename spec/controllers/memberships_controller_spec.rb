@@ -46,7 +46,6 @@ describe MembershipsController do
       delete :destroy, project_id: membership1.project.id, id: membership1.id
       expect(@project.memberships.where('role=?', 'owner').count).to eq(owner_count)
     end
-
   end
 
 
