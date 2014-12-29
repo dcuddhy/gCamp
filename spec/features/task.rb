@@ -18,7 +18,8 @@ feature "Tasks CRUD" do
     last_name: "Hogan",
     email: "hh@hh.com",
     password: "pass",
-    password_confirmation: "pass"
+    password_confirmation: "pass",
+    admin: true
     )
     visit signin_path
     fill_in "Email", with: "hh@hh.com"
