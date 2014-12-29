@@ -9,6 +9,11 @@ require 'rails_helper'
 feature "Projects CRUD" do
 
 
+
+
+
+
+
   scenario "User can add a project" do
 
     visit projects_path
