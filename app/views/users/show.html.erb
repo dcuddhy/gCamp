@@ -38,7 +38,7 @@
     <% end %>
   </tr>
 
-  <% if @user.pivotal_tracker_token %>
+  <% if @user.pivotal_tracker_token? %>
 
     <tr>
       <td>
@@ -48,7 +48,7 @@
         <%=
           @user.pivotal_tracker_token[0 .. 3]
         %><%=
-         '*' * (@user.pivotal_tracker_token.length - 4)
+         '*' * (@user.pivotal_tracker_token.length -4)
         %>
       </td>
     </tr>

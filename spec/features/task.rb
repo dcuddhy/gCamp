@@ -11,6 +11,21 @@ require 'rails_helper'
 
 feature "Tasks CRUD" do
 
+
+  before do
+    User.create!(
+    first_name: "Hulk",
+    last_name: "Hogan",
+    email: "hh@hh.com",
+    password: "pass",
+    password_confirmation: "pass"
+    )
+    visit signin_path
+    fill_in "Email", with: "hh@hh.com"
+    fill_in "Password", with: "pass"
+    click_button "Sign in"
+  end
+
   scenario "User can create a task" do
 
     visit projects_path

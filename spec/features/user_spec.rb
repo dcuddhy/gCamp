@@ -10,6 +10,21 @@ require 'rails_helper'
 
 feature "Users CRUD" do
 
+  before do
+    User.create!(
+    first_name: "Hulk",
+    last_name: "Hogan",
+    email: "hh@hh.com",
+    password: "pass",
+    password_confirmation: "pass",
+    admin: true
+    )
+    visit signin_path
+    fill_in "Email", with: "hh@hh.com"
+    fill_in "Password", with: "pass"
+    click_button "Sign in"
+  end
+
   scenario "User creates a user" do
 
     visit users_path
@@ -58,6 +73,7 @@ feature "Users CRUD" do
     click_on "Create User"
     expect(page).to have_content("Barry White")
 
+    click_on "Barry White"
     click_on "Edit"
     fill_in "Last name", with: "Black"
     click_on "Update User"
@@ -79,9 +95,11 @@ feature "Users CRUD" do
     click_on "Create User"
     expect(page).to have_content("Barry White")
 
+    click_on "Barry White"
     click_on "Edit"
     click_on "Delete"
-    expect(page).to have_content("Deleted Successfully")
+    expect(page).to have_content("successfully deleted")
+    expect(page).to have_no_content("Barry White")
 
   end
 
