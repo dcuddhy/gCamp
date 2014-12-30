@@ -1,6 +1,7 @@
 require 'rails_helper'
 
 describe MembershipsController do
+
   before do
     @project = Project.create!(
       name: "Acme"
