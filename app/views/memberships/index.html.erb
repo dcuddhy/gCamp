@@ -50,10 +50,6 @@
             user_path(user) %>
           </td>
 
-          <% if current_user.memberships.find_by(
-            project_id: @project,
-            user_id: current_user,
-            role: "owner") || current_user.admin %>
 
               <td class="col-sm-2"><br>
                 <%= f.select :role, ["member", "owner"],{},
@@ -70,7 +66,6 @@
                   data: { confirm: 'Are you sure?' },
                   class:"glyphicon glyphicon-remove"  %>
               </td>
-          <% end %>
         <% end %>
 
           <td>

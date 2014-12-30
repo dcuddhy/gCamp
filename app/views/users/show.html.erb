@@ -45,11 +45,8 @@
         <strong class="col-xs-2 text-right">
           Pivotal Tracker Token:
         </strong>
-        <%=
-          @user.pivotal_tracker_token[0 .. 3]
-        %><%=
-         '*' * (@user.pivotal_tracker_token.length -4)
-        %>
+        <%= "#{@user.pivotal_tracker_token[0 .. 3]}**************************" %>
+
       </td>
     </tr>
   <% end %>

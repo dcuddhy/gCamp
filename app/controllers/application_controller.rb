@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
 
   def current_user
     if session[:user_id]
-      User.find_by(id: session[:user_id])
+      User.find_by(id: session[:user_id]) || current_user.admin
     end
   end
 
@@ -52,6 +52,8 @@ class ApplicationController < ActionController::Base
 
 
   def owner_check
+
+    @project = Project.find(params[:project_id])
     unless current_user.memberships.find_by(
       project_id: @project,
       user_id: current_user,
