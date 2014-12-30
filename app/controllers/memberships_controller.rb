@@ -56,11 +56,7 @@ class MembershipsController < ApplicationController
     end
   end
 
-
-
-
   def destroy
-
     @membership = @project.memberships.find(params[:id])
     if @membership.role == "owner" && @project.memberships.where(role: "owner").count == 1
       redirect_to project_memberships_path(@project),
@@ -90,23 +86,11 @@ class MembershipsController < ApplicationController
       redirect_to project_memberships_path(@project),
       notice: "User cannot be deleted right now."
     end
-
   end
-
-
-
-
-
-
-
-
-
-
 
   layout :determine_layout
 
   private
-
 
   def membership_params
     params.require(:membership).permit(:project_id, :user_id, :role)
