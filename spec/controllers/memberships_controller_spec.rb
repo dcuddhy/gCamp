@@ -49,33 +49,33 @@ describe MembershipsController do
 
   describe "#index" do
 
-    it "visitors cannot see index" do
+    it "does not allow visitors to see index" do
       session[:user_id] = nil
-      get :index, project_id: @project.id
+      get :index, project_id: @project
       expect(response.status).to redirect_to(signin_path)
     end
 
-    it "non-members cannot see index" do
-      session[:user_id] = @user.id
-      get :index, project_id: @project.id
+    it "does not allow non-members to see index" do
+      session[:user_id] = @user
+      get :index, project_id: @project
       expect(response.status).to eq(404)
     end
 
-    it "members can see index" do
-      session[:user_id] = @member.id
-      get :index, project_id: @project.id
+    it "allows members to see index" do
+      session[:user_id] = @member
+      get :index, project_id: @project
       expect(response).to render_template('index')
     end
 
-    it "owners can see index" do
-      session[:user_id] = @owner.id
-      get :index, project_id: @project.id
+    it "allows owners to see index" do
+      session[:user_id] = @owner
+      get :index, project_id: @project
       expect(response).to render_template('index')
     end
 
-    it "admins can see index" do
-      session[:user_id] = @admin.id
-      get :index, project_id: @project.id
+    it "allows admins to see index" do
+      session[:user_id] = @admin
+      get :index, project_id: @project
       expect(response).to render_template('index')
     end
 
@@ -87,28 +87,28 @@ describe MembershipsController do
 
   describe "#create" do
 
-    it "visitors cannot create" do
+    it "does not allow visitors to create" do
       session[:user_id] = nil
-      post :create, project_id: @project.id
+      post :create, project_id: @project
       expect(response.status).to redirect_to(signin_path)
     end
 
-    it "non-members cannot create" do
-      session[:user_id] = @user.id
+    it "does not allow non-members to create" do
+      session[:user_id] = @user
       post :create, project_id: @project, id: @user
       expect(response.status).to eq(404)
     end
 
-    it "members cannot create" do
-      session[:user_id] = @member.id
-      post :create, project_id: @project, id: @user.id
+    it "does not allow members to create create" do
+      session[:user_id] = @member
+      post :create, project_id: @project, id: @user
       expect(response.status).to eq(404)
     end
 
-    it "admin can create" do
-      session[:user_id] = @admin.id
-      post :create, project_id: @project.id, :membership =>
-      {project_id: @project.id, user_id: @user, role: 'member'}
+    it "allows admins to create" do
+      session[:user_id] = @admin
+      post :create, project_id: @project, :membership =>
+      {project_id: @project, user_id: @user, role: 'member'}
       expect(response).to redirect_to(project_memberships_path(@project))
     end
 
@@ -118,34 +118,60 @@ describe MembershipsController do
   # ----------------------> #UPDATE <----------------------------
 
 
+  describe "#update" do
+
+    it "does not allow non-members to update" do
+      session[:user_id] = @admin
+      post :create, project_id: @project, :membership =>
+      {project_id: @project.id, user_id: @user, role: 'member'}
+      expect(response).to redirect_to(project_memberships_path(@project))
+
+      session[:user_id] = @user
+      put :update, project_id: @project, id: @user
+      expect(response.status).to eq(404)
+    end
+
+    it "does not allow members to update" do
+      session[:user_id] = @admin
+      post :create, project_id: @project, :membership =>
+      {project_id: @project.id, user_id: @user, role: 'member'}
+      expect(response).to redirect_to(project_memberships_path(@project))
+
+      session[:user_id] = @member
+      put :update, project_id: @project, id: @user
+      expect(response.status).to eq(404)
+    end
+
+  end
+
 
   # ----------------------> #DESTROY <----------------------------
 
 
   describe "#destroy" do
 
-    it "non-member cannot destroy member" do
-      session[:user_id] = @user.id
+    it "does not allow non-members to destroy" do
+      session[:user_id] = @user
       member_count = @project.memberships.where('role=?', 'member').count
-      delete :destroy, project_id: @membership.project.id, id: @membership.id
+      delete :destroy, project_id: @membership.project, id: @membership
       expect(@project.memberships.where('role=?', 'member').count).to eq(member_count)
     end
 
-    it "member cannot destroy member" do
-      session[:user_id] = @member.id
+    it "does not allow member to destroy" do
+      session[:user_id] = @member
       member_count = @project.memberships.where('role=?', 'member').count
-      delete :destroy, project_id: @membership.project.id, id: @membership.id
+      delete :destroy, project_id: @membership.project, id: @membership
       expect(@project.memberships.where('role=?', 'member').count).to eq(member_count)
     end
 
-    it "cannot destroy last owner" do
-      session[:user_id] = @owner.id
+    it "does not allow last owner to be destroyed" do
+      session[:user_id] = @owner
       owner_count = @project.memberships.where('role=?', 'owner').count
-      delete :destroy, project_id: @membership.project.id, id: @membership.id
+      delete :destroy, project_id: @membership.project, id: @membership
       expect(@project.memberships.where('role=?', 'owner').count).to eq(owner_count)
     end
 
-    it "owner can destroy owner when multiple owners exist" do
+    it "allows owner to be destroyed when multiple owners exist" do
       @owner = User.create!(
         first_name: "Josh",
         last_name: "Example",
@@ -157,34 +183,34 @@ describe MembershipsController do
         project_id: @project.id,
         role: 'owner'
       )
-      session[:user_id] = @owner.id
+      session[:user_id] = @owner
       owner_count = @project.memberships.where('role=?', 'owner').count
-      delete :destroy, project_id: @membership.project.id, id: @membership.id
+      delete :destroy, project_id: @membership.project, id: @membership
       expect(@project.memberships.where('role=?', 'owner').count).to eq(owner_count -1)
     end
 
-    it "member can destroy self" do
+    it "allows member to destroy self" do
 
       @membership2 = Membership.create!(
         user_id: @user.id,
         project_id: @project.id,
         role: 'member'
       )
-      session[:user_id] = @membership2.user.id
+      session[:user_id] = @membership2.user
       member_count = @project.memberships.where('role=?', 'member').count
-      delete :destroy, project_id: @membership2.project.id, id: @membership2.id
+      delete :destroy, project_id: @membership2.project, id: @membership2
       expect(@project.memberships.where('role=?', 'member').count).to eq(member_count -1)
     end
 
-    it "admin can destroy" do
+    it "allows admin to destroy" do
       @membership2 = Membership.create!(
         user_id: @user.id,
         project_id: @project.id,
         role: 'member'
       )
-      session[:user_id] = @admin.id
+      session[:user_id] = @admin
       member_count = @project.memberships.where('role=?', 'member').count
-      delete :destroy, project_id: @membership2.project.id, id: @membership2.id
+      delete :destroy, project_id: @membership2.project, id: @membership2
       expect(@project.memberships.where('role=?', 'member').count).to eq(member_count -1)
     end
 
