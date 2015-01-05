@@ -68,14 +68,7 @@ class MembershipsController < ApplicationController
       @membership.destroy
       redirect_to project_memberships_path(@project),
       notice: " #{@membership.user.full_name} was removed successfully!"
-    elsif current_user.memberships.find_by(
-      project_id: @project,
-      user_id: current_user,
-      role: "owner") && @membership.user.id == current_user.id || current_user.admin
-      @membership.destroy
-      redirect_to projects_path(@project),
-      notice: " #{@membership.user.full_name} was removed successfully!"
-    elsif @membership.user.id == current_user.id
+    elsif @membership.user.id == current_user.id || current_user.admin
       @membership.destroy
       redirect_to projects_path(@project),
       notice: " #{@membership.user.full_name} was removed successfully!"
