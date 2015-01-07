@@ -33,6 +33,5 @@ class CommentsController <ApplicationController
     redirect_to comments_path, notice: 'Comment was successfully deleted.'
   end
 
-  layout :determine_layout
 
 end

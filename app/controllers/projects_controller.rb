@@ -57,6 +57,5 @@ class ProjectsController <ApplicationController
     redirect_to projects_path, notice: 'Project was successfully deleted.'
   end
 
-  layout :determine_layout
 
 end

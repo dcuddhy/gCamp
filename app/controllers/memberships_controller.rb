@@ -81,7 +81,6 @@ class MembershipsController < ApplicationController
     end
   end
 
-  layout :determine_layout
 
   private
 

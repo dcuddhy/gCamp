@@ -12,13 +12,6 @@ class ApplicationController < ActionController::Base
   helper_method :current_user
 
 
-  def determine_layout
-    current_user ? "application" : "public"
-  end
-
-  helper_method :determine_layout
-
-
   class AccessDenied < StandardError
   end
 

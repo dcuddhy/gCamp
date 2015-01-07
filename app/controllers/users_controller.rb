@@ -55,7 +55,6 @@ class UsersController < ApplicationController
     redirect_to users_path, notice: "User was successfully deleted"
   end
 
-  layout :determine_layout
 
   private
 

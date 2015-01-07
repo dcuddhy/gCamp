@@ -55,7 +55,6 @@ class TasksController < ApplicationController
       redirect_to project_tasks_path(@project, @task), notice: 'Task was successfully destroyed.'
   end
 
-  layout :determine_layout
 
   private
 
