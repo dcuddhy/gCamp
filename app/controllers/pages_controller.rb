@@ -1,4 +1,4 @@
-class PagesController <PublicController
+class PagesController < PublicController
 
 
 
