@@ -48,39 +48,39 @@ describe MembershipsController do
   # ----------------------> #INDEX <----------------------------
 
 
-  describe "#index" do
-
-    it "does not allow visitors to see index" do
-      session[:user_id] = nil
-      get :index, project_id: @project
-      expect(response.status).to redirect_to(signin_path)
-    end
-
-    it "does not allow non-members to see index" do
-      session[:user_id] = @user
-      get :index, project_id: @project
-      expect(response.status).to eq(404)
-    end
-
-    it "allows members to see index" do
-      session[:user_id] = @member
-      get :index, project_id: @project
-      expect(response).to render_template('index')
-    end
-
-    it "allows owners to see index" do
-      session[:user_id] = @owner
-      get :index, project_id: @project
-      expect(response).to render_template('index')
-    end
-
-    it "allows admins to see index" do
-      session[:user_id] = @admin
-      get :index, project_id: @project
-      expect(response).to render_template('index')
-    end
-
-  end
+  # describe "#index" do
+  #
+  #   it "does not allow visitors to see index" do
+  #     session[:user_id] = nil
+  #     get :index, project_id: @project
+  #     expect(response.status).to redirect_to(signin_path)
+  #   end
+  #
+  #   it "does not allow non-members to see index" do
+  #     session[:user_id] = @user
+  #     get :index, project_id: @project
+  #     expect(response.status).to eq(404)
+  #   end
+  #
+  #   it "allows members to see index" do
+  #     session[:user_id] = @member
+  #     get :index, project_id: @project
+  #     expect(response).to render_template('index')
+  #   end
+  #
+  #   it "allows owners to see index" do
+  #     session[:user_id] = @owner
+  #     get :index, project_id: @project
+  #     expect(response).to render_template('index')
+  #   end
+  #
+  #   it "allows admins to see index" do
+  #     session[:user_id] = @admin
+  #     get :index, project_id: @project
+  #     expect(response).to render_template('index')
+  #   end
+  #
+  # end
 
 
   # ----------------------> #CREATE <----------------------------
@@ -88,11 +88,11 @@ describe MembershipsController do
 
   describe "#create" do
 
-    it "does not allow visitors to create" do
-      session[:user_id] = nil
-      post :create, project_id: @project
-      expect(response.status).to redirect_to(signin_path)
-    end
+    # it "does not allow visitors to create" do
+    #   session[:user_id] = nil
+    #   post :create, project_id: @project
+    #   expect(response.status).to redirect_to(signin_path)
+    # end
 
     it "does not allow non-members to create" do
       session[:user_id] = @user

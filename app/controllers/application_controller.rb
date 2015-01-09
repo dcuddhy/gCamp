@@ -42,10 +42,11 @@ class ApplicationController < ActionController::Base
   end
 
   helper_method :project_id_match
-
+  
 
   def owner_check
-    unless current_user.memberships.where(project_id: @project.id, role: "owner")
+    unless current_user.memberships.find_by(project_id: @project, role: "owner") ||
+      current_user.admin
     raise AccessDenied
     end
   end
