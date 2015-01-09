@@ -45,13 +45,8 @@ class ApplicationController < ActionController::Base
 
 
   def owner_check
-
-    @project = Project.find(params[:project_id])
-    unless current_user.memberships.find_by(
-      project_id: @project,
-      user_id: current_user,
-      role: "owner") || current_user.admin
-      raise AccessDenied
+    unless current_user.memberships.where(project_id: @project.id, role: "owner")
+    raise AccessDenied
     end
   end
 
