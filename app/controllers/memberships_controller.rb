@@ -63,7 +63,6 @@ class MembershipsController < ApplicationController
       notice: "User cannot be deleted right now."
     elsif current_user.memberships.find_by(
       project_id: @project,
-      user_id: current_user,
       role: "owner") && @membership.user.id != current_user.id || current_user.admin
       @membership.destroy
       redirect_to project_memberships_path(@project),
@@ -74,7 +73,6 @@ class MembershipsController < ApplicationController
       notice: " #{@membership.user.full_name} was removed successfully!"
     else current_user.memberships.find_by(
       project_id: @project,
-      user_id: current_user,
       role: "member")
       redirect_to project_memberships_path(@project),
       notice: "User cannot be deleted right now."

@@ -1,12 +1,10 @@
 <%= page_header "Memberships for #{@project.name}" do %>
 <% end %>
-
 <ol class="breadcrumb">
   <li><%= link_to "Projects", projects_path %></li>
   <li><%= link_to  @project.name, project_path(@project) %></li>
   <li class="active">Memberships</li>
 </ol>
-
 
 <div class="row">
   <div class="col-xs-6">
