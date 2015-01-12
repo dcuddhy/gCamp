@@ -1,11 +1,11 @@
 class MembershipsController < ApplicationController
 
-  before_action :are_you_logged_in
-  before_action :owner_check, except: [:index, :destroy]
-
   before_action do
     @project = Project.find(params[:project_id])
   end
+
+  before_action :are_you_logged_in
+  before_action :owner_check, except: [:index, :destroy]
 
 
   def index

@@ -43,24 +43,13 @@ class ApplicationController < ActionController::Base
 
   helper_method :project_id_match
 
-
   def owner_check
     unless current_user.memberships.find_by(
       project_id: @project,
-      user_id: current_user,
       role: "owner") || current_user.admin
     raise AccessDenied
     end
   end
-
-
-
-  # def owner_check
-  #   unless current_user.memberships.find_by(project_id: @project, role: "owner") ||
-  #         current_user.admin
-  #     raise AccessDenied
-  #   end
-  # end
 
 
   helper_method :owner_check

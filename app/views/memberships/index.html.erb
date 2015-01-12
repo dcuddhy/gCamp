@@ -12,6 +12,10 @@
   </div>
 </div>
 
+<% if current_user.memberships.find_by(
+  project_id: @project,
+  user_id: current_user,
+  role: "owner") || current_user.admin %>
 
   <div class="well form-inline">
     <%= form_for [@project, @membership] do |f| %>
@@ -33,9 +37,9 @@
 
       <%= f.submit "Add New Member", class:"btn btn-primary" %>
 
+    <% end %>
   </div>
 <% end %>
-
 
 <table>
   <tr>
