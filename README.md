@@ -1,37 +1,30 @@
-== README <br>
-
-[![Build Status](https://travis-ci.org/dcuddhy/gCamp.svg?branch=master)](https://travis-ci.org/dcuddhy/gCamp)
-
 [![Code Climate](https://codeclimate.com/github/dcuddhy/gCamp/badges/gpa.svg)](https://codeclimate.com/github/dcuddhy/gCamp)
 
-* * * * * * * * * * * *
-https://floating-gorge-3757.herokuapp.com/
-* * * * * * * * * * * *
+## See this project live:
+https://tbcdc.herokuapp.com
+<br><br>
 
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Product Description
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+A Ruby on Rails app that has been the foundation of my understanding of the framework. It features users of various classes who can add or be added to projects. It stands to be an excellent group organizational tool with tasks, due dates, comments, and more.
+<br><br>
 
 
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+## Technical Notes
+
+Ruby on Rails
+
+Authorizations
+
+Associations
+
+Permissions
+
+Twitter Bootstrap
+
+Multiple Application Layouts
+<br><br>
+
+
+###### Spring 2015
