@@ -1,6 +1,10 @@
 language: ruby
 rvm:
   - 2.1.3
-
+before_script:
+  - cp config/database.yml.travis config/database.yml
+  - bundle exec rake db:create
+  - bundle exec rake db:reset
+  - bundle exec rake db:migrate
 script:
-  - RAILS_ENV=test bundle exec rake --trace db:create db:migrate
+  - bundle exec rake spec
