@@ -1,7 +1,9 @@
+[![Build Status](https://travis-ci.org/dcuddhy/gCamp.svg?branch=master)](https://travis-ci.org/dcuddhy/gCamp)
+
 [![Code Climate](https://codeclimate.com/github/dcuddhy/gCamp/badges/gpa.svg)](https://codeclimate.com/github/dcuddhy/gCamp)
 
 ## See this project live:
-https://tbcdc.herokuapp.com
+https://mysterious-citadel-5725.herokuapp.com/
 <br><br>
 
 
