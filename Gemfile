@@ -13,7 +13,7 @@ gem "pg"
 gem "faraday"
 
 group :production do
-  gem "rails_12factor"
+  gem "rails_12factor" 
 end
 
 gem 'bootstrap-sass', '~> 3.2.0'
